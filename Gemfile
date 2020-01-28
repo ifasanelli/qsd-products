@@ -15,6 +15,8 @@ gem 'webpacker', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
 
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'devise'
+gem 'locastyle'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
