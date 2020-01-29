@@ -22,7 +22,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= notice %>
+      <%= alert %>
+      <%= yield %>
+    </div>
 
     <!--locastyle js-->
     <!-- We recommended use jQuery 1.10 or up -->
