@@ -18,4 +18,15 @@ feature 'user register a new product type' do
     expect(page).to have_content('HOSP')
     expect(current_path).not_to eq(root_path)
   end
+
+  scenario 'return error message if can\'t register' do
+    visit root_path
+
+    click_on 'Tipos de Produtos'
+    click_on 'Registrar novo Tipo de Produto'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Você deve corrigir os seguintes erros')
+    expect(page).not_to have_content('Hospedagem')
+  end
 end

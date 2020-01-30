@@ -1,0 +1,13 @@
+---
+pt-BR:
+  product_types:
+    create:
+      success: "%{product_type} registrado com sucesso"
+  activerecord:
+    models:
+      product_type: 'Tipo de Produto'
+    attributes:
+      product_type:
+        name: 'Nome'
+        description: 'Descrição'
+        product_key: 'Chave do Produto'

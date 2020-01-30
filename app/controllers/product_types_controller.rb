@@ -1,5 +1,5 @@
 class ProductTypesController < ApplicationController
-  before_action :find_product_type, only: [:show, :edit, :update]
+  before_action :find_product_type, only: %i[show edit update]
   
   def new
     @product_type = ProductType.new
@@ -7,24 +7,23 @@ class ProductTypesController < ApplicationController
 
   def create
     @product_type = ProductType.new(product_type_params)
-
     return redirect_to @product_type, 
-      notice: 'Tipo de Produto registrado com sucesso' if @product_type.save
+      notice: t('.success') if @product_type.save
+    render :new
   end
 
-  def show
-  end
+  def show; end
 
   def index
     @product_types = ProductType.all
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-    @product_type = ProductType.update(product_type_params)
-    redirect_to @product_type, notice: 'Tipo de Produto editado com sucesso'
+  def update  
+    return redirect_to @product_type, 
+      notice: t('.success') if @product_type.update(product_type_params)
+    render :edit
   end
 
   private
