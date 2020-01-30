@@ -1,18 +1,26 @@
 class PeriodicitiesController < ApplicationController
-
   def index
+    @periodicity = Periodicity.new
     @periodicities = Periodicity.all
     if @periodicities.empty?
-      flash[:alert] = 'Não há periodicidades cadastradas'
+      flash[:alert] = 'a'
+      flash[:notice] = 'b'
     end
   end
 
   def create
-    @periodicity = Periodicity.new
+    @periodicity = Periodicity.new(periodicity_params)
     if @periodicity.save
-      render :index
+      redirect_to periodicities_path
     else
-      flash[:alert] = 'tente novamente'
+      @periodicities = Periodicity.all
+      redirect_to periodicities_path
     end
+  end
+
+  private
+
+  def periodicity_params
+    params.require(:periodicity).permit(:name, :period)
   end
 end

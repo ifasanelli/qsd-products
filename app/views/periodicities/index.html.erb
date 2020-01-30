@@ -1,20 +1,26 @@
-<h1> Periodicidade </h1><br><br>
+<h1 class='ls-title-intro'> Periodicidade </h1>
 
-<% if @periodicities.empty?%>
-<div class="ls-alert-danger"><strong>Atenção!</strong> Não há periodicidades cadastradas.</div>
+
+<% if @periodicity.errors.any? %>
+  <div class="ls-alert-danger"><strong>Atenção!</strong> <%= alert %></div>
 <% end %>
 
-<%= form_with url: "#", method: :post, class:"ls-form row" do |form| %>
 
-  <%= form.label :name, 'Campo_nome', class: 'ls-label col-md-3' do%>
+<% if @periodicities.empty?%>
+  <div class="ls-alert-danger"><strong>Atenção!</strong> <%= notice %></div>
+<% end %>
+
+<%= form_with model: @periodicity, class:"ls-form row", locals: true do |form| %>
+
+  <%= form.label :name, class: 'ls-label col-md-3' do%>
     <b class="ls-label-text">Nome</b>
     <p class="ls-label-info">Descrição</p>
     <%= form.text_field :name %>
   <% end %>
-  <%= form.label :periodo, 'Campo_nome', class: 'ls-label col-md-3' do%>
+  <%= form.label :period, class: 'ls-label col-md-3' do%>
     <b class="ls-label-text">Período</b>
     <p class="ls-label-info">Quantidade em Meses</p>
-    <%= form.text_field :periodo %>
+    <%= form.text_field :period %>
   <% end %>
   <div class="ls-actions-btn">
     <%= form.submit "Salvar" , class: 'ls-btn'%>

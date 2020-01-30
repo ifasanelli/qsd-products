@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Periodicity.create(name: "Mensal", period: 1 )
-Periodicity.create(name: "Trimestral", period: 3 )
-Periodicity.create(name: "Semestral", period: 6 )
+# Periodicity.create(name: "Mensal", period: 1 )
+# Periodicity.create(name: "Trimestral", period: 3 )
+# Periodicity.create(name: "Semestral", period: 6 )

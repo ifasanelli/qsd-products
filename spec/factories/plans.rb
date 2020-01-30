@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :plan do
-    name { "MyString" }
-    description { "MyText" }
+    name { 'MyString' }
+    description { 'MyText' }
     product_type { nil }
-    details { "MyText" }
+    details { 'MyText' }
   end
 end
