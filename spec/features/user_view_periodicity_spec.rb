@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'User view periodicity' do
   context 'periodicity' do
     it 'successfully' do
-      create(:periodicity, period: 1)
-      create(:periodicity, period: 3)
-      create(:periodicity, period: 6)
-      create(:periodicity, period: 12)
+      create(:periodicity, name: 'Mensal', period: 1)
+      create(:periodicity, name: 'Trimestral', period: 3)
+      create(:periodicity, name: 'Semestral', period: 6)
+      create(:periodicity, name: 'Anual', period: 12)
       visit root_path
       click_on 'Periodicidade'
       expect(page).to have_content('Meses')
@@ -18,7 +18,7 @@ describe 'User view periodicity' do
     it 'dont have periodicity registered' do
       visit root_path
       click_on 'Periodicidade'
-      expect(page).to have_content('Não há periodicidades cadastradas')
+      expect(page).to have_content('Lista vazia')
     end
   end
 end

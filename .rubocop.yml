@@ -18,6 +18,7 @@ AllCops:
     - 'config/initializers/*'
     - 'config/environments/*'
     - 'config/application.rb'
+    - 'spec/features/*'
 
 Style/Documentation:
  Enabled: false
