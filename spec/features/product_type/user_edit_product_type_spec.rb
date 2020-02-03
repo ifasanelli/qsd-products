@@ -11,7 +11,7 @@ feature 'user edit a product type' do
     fill_in 'Nome', with: 'Email'
     fill_in 'Descrição', with: 'Serviço de email usa protocolos pop/smtp'
     fill_in 'Chave do Produto', with: 'EMAIL'
-    click_on 'Enviar'
+    click_on 'Atualizar Tipo de Produto'
 
     expect(page).to have_content('editado com sucesso')
     expect(page).to have_content('Email')
@@ -29,7 +29,7 @@ feature 'user edit a product type' do
     fill_in 'Nome', with: ''
     fill_in 'Descrição', with: ''
     fill_in 'Chave do Produto', with: ''
-    click_on 'Enviar'
+    click_on 'Atualizar Tipo de Produto'
 
     expect(page).to have_content('Você deve corrigir os seguintes erros')
   end
