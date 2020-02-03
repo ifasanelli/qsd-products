@@ -2,7 +2,9 @@
 pt-BR:
   product_types:
     create:
-      success: "%{product_type} registrado com sucesso"
+      success: "Tipo de Produto registrado com sucesso"
+    update:
+      success: "Tipo de Produto editado com sucesso"
   activerecord:
     models:
       product_type: 'Tipo de Produto'

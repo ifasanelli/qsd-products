@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "home#index"
-  resources :product_types, only: [:index, :new, :create, :show, :edit, :update]
+  root to: 'home#index'
+  resources :product_types, only: %i[index new create show edit update]
 end
