@@ -1,0 +1,16 @@
+<% if @product_type.errors.any? %>
+  Você deve corrigir os seguintes erros
+ <% @product_type.errors.full_messages.each do |message| %>
+  <%= message %>
+ <% end %>
+<% end %>
+
+<%= form_with model: @product_type, local: true do |f| %>
+ <%= f.label :name %>
+ <%= f.text_field :name %>
+ <%= f.label :description %>
+ <%= f.text_area :description %>
+ <%= f.label :product_key %>
+ <%= f.text_field :product_key %>
+ <%= f.submit %>
+<% end %>

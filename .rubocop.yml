@@ -20,11 +20,23 @@ AllCops:
     - 'config/application.rb'
     - 'spec/features/*'
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/Documentation:
- Enabled: false
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
- Enabled: false
+  Enabled: false
+
+Style/MultilineIfModifier:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  Enabled: false
 
 Metrics/BlockLength:
  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
