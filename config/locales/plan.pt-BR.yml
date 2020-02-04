@@ -1,0 +1,17 @@
+---
+pt-BR:
+  plans:
+    create:
+      success: "Plano registrado com sucesso"
+    update:
+      success: "Plano editado com sucesso"
+  activerecord:
+    models:
+      plan: 'Plano'
+    attributes:
+      plan:
+        name: 'Nome'
+        description: 'Descrição'
+        details: 'Detalhes'
+        product_type_id: 'Tipo de Produto'
+        product_type: 'Tipo de Produto'

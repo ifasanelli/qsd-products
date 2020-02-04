@@ -12,7 +12,7 @@ feature 'user register a new plan type' do
                                ' para que você possa armazenar o seu site.'
     select 'Hospedagem', from: 'Tipo de Produto'
     fill_in 'Detalhes', with: 'Muitos detalhes, cheio deles'
-    click_on 'Enviar'
+    click_on 'Criar Plano'
 
     expect(page).to have_content('Plano registrado com sucesso')
     expect(page).to have_content('Hospedagem Básica')
@@ -27,7 +27,7 @@ feature 'user register a new plan type' do
 
     click_on 'Planos'
     click_on 'Registrar novo Plano'
-    click_on 'Enviar'
+    click_on 'Criar Plano'
 
     expect(page).to have_content('Você deve corrigir os seguintes erros')
     expect(page).not_to have_content('Hospedagem Básica')

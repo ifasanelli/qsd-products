@@ -4,6 +4,10 @@ class PlansController < ApplicationController
     @plans = Plan.all
   end
 
+  def show
+    @plan = Plan.find(params[:id])
+  end
+
   def new
     @plan = Plan.new
     @product_types = ProductType.all
@@ -13,6 +17,8 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     return redirect_to @plan,
                        notice: t('.success') if @plan.save
+
+    @product_types = ProductType.all
     render :new
   end
 
@@ -23,7 +29,7 @@ class PlansController < ApplicationController
   end
 
   def plan_params
-    params.require(:plan).permit(:name, :description, :product_type_id, 
+    params.require(:plan).permit(:name, :description, :product_type_id,
                                  :details)
   end
 end
