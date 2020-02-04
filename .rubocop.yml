@@ -19,6 +19,9 @@ AllCops:
     - 'config/environments/*'
     - 'config/application.rb'
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
