@@ -3,15 +3,17 @@ class PeriodicitiesController < ApplicationController
   before_action :dependencies, only: %i[create index edit]
 
   def index
+    @periodicities = Periodicity.all
     @periodicity = Periodicity.new
   end
 
   def create
     @periodicity = Periodicity.new(periodicity_params)
-    return redirect_to periodicities_path if @periodicity.save
-
-    @errors = @periodicity.errors.full_messages
-    redirect_to periodicities_path, flash: { error: @errors }
+    if @periodicity.save
+      redirect_to periodicities_path
+    else
+      render 'index'
+    end
   end
 
   def edit
@@ -19,10 +21,13 @@ class PeriodicitiesController < ApplicationController
   end
 
   def update
-    periodicity = Periodicity.find(params[:id])
-    return render :index if periodicity.update(periodicity_params)
+    @periodicity = Periodicity.find(params[:id])
 
-    render :edit
+    if @periodicity.update(periodicity_params)
+      redirect_to periodicities_path
+    else
+      render 'edit'
+    end
   end
 
   private

@@ -17,6 +17,7 @@ describe 'User register periodicity' do
       click_on 'Salvar'
       expect(page).to have_content("Name can't be blank")
     end
+
     it 'must be unique' do
       create(:periodicity, name: 'Anual', period: '12')
       visit root_path

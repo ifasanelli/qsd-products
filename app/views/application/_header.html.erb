@@ -7,8 +7,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
 
     <!--locastyle css-->
     <meta charset="utf-8">
@@ -48,9 +48,7 @@
           <nav class="ls-dropdown-nav ls-user-menu">
             <ul>
               <li><a href="#">Meus dados</a></li>
-              <li><a href="#">Faturas</a></li>
-              <li><a href="#">Planos</a></li>
-              <li><a href="#">Sair</a></li>
+             
             </ul>
           </nav>
         </div>
@@ -79,18 +77,12 @@
 
           <nav class="ls-menu">
             <ul>
-              <li><a href="/locawebstyle/documentacao/exemplos/painel1/home" class="ls-ico-dashboard" title="Dashboard">Tipos de Produtos</a></li>
               <li><%= link_to 'Periodicidade', periodicities_path, class: 'ls-ico-users', title: 'Periodicidade'%></li>
-              <li><a href="/locawebstyle/documentacao/exemplos/painel1/stats" class="ls-ico-stats" title="Relatórios da revenda">Planos</a></li>
               <li>
                 <a href="#" class="ls-ico-cog" title="Configurações">Configurações</a>
                 <ul>
                   <li><a href="/locawebstyle/documentacao/exemplos/painel1/config-domain">Domínios da Revenda</a></li>
-                  <li><a href="/locawebstyle/documentacao/exemplos/painel1/config-email">E-mail de Remetente</a></li>
-                  <li><a href="/locawebstyle/documentacao/exemplos/painel1/config-aspect">Aparência</a></li>
-                  <li><a href="/locawebstyle/documentacao/exemplos/painel1/config-answer">Atendimento</a></li>
-                  <li><a href="/locawebstyle/documentacao/exemplos/painel1/config-api">Chave de acesso para API</a></li>
-                </ul>
+               </ul>
               </li>
             </ul>
           </nav>

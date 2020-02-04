@@ -1,2 +1,10 @@
 <h2 class="ls-title-3">Editar Periodicidade <strong></strong></h2>
-<%= render partial: 'form', locals: { peridicities: @periodicity } %>
+
+<% if @periodicity.errors.any? %>
+
+  <% @periodicity.errors.full_messages.each do |msg| %>
+     <%= msg %>
+  <% end %>
+<% end %>
+
+<%= render partial: 'form'%>

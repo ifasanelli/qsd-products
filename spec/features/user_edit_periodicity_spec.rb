@@ -25,12 +25,19 @@ describe 'User edit periodicity' do
       expect(page).to have_content('Anual')
       expect(page).to have_content('12')
     end
+
     it 'fields cant be blank' do
+      create(:periodicity, name: 'X', period: 33)
+
       visit root_path
       click_on 'Periodicidade'
+      click_on 'Alterar'
+      fill_in 'Nome', with: ''
+      fill_in 'Período', with: ''
       click_on 'Salvar'
       expect(page).to have_content("Name can't be blank")
     end
+
     it 'must be unique' do
       create(:periodicity, name: 'Anual', period: '12')
 

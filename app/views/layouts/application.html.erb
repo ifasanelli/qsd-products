@@ -1,4 +1,4 @@
-<%= render partial: '/header'%>
+<%= render partial: 'header'%>
 
       <h1 class='ls-title-intro'> <%= @view_name %> </h1>
         <% if flash[:error]%>
@@ -8,5 +8,5 @@
         <% end %>
       <%= yield %>
     
-<%= render partial: '/footer'%>
+<%= render partial: 'footer'%>
 

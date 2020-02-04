@@ -18,7 +18,7 @@ describe 'User view periodicity' do
     it 'dont have periodicity registered' do
       visit root_path
       click_on 'Periodicidade'
-      expect(page).to have_content('Lista vazia')
+      expect(page).to have_content('Lista Vazia')
     end
   end
 end
