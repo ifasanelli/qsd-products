@@ -1,0 +1,17 @@
+---
+pt-BR:
+  prices:
+    create:
+      success: "Preço registrado com sucesso"
+    update:
+      success: "Preço editado com sucesso"
+  activerecord:
+    models:
+      price: 'Preço'
+    attributes:
+      price:
+        plan_price: 'Preço do Plano'
+        plan_id: 'Plano'
+        plan: 'Plano'
+        periodicity_id: 'Periodicidade'
+        periodicity: 'Periodicidade'
