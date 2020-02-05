@@ -8,3 +8,8 @@
 # Periodicity.create(name: "Mensal", period: 1 )
 # Periodicity.create(name: "Trimestral", period: 3 )
 # Periodicity.create(name: "Semestral", period: 6 )
+product_type = ProductType.create(name: 'Plan_product_test', description: 'teste',
+                                  product_key: 'XYZ')
+
+Plan.create(name: 'Plan Mensal', description:'desc teste', product_type: product_type, details: 'detalhes')
+Plan.create(name: 'Plan Anual', description:'desc teste', product_type: product_type, details: 'detalhes')

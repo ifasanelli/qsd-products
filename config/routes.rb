@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :product_types, only: %i[index]
+      resources :plans, only: %i[index]
     end
   end
 end
