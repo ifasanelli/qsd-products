@@ -1,4 +1,5 @@
 class ProductTypesController < ApplicationController
+  before_action :set_view_name, only: %i[index edit]
   before_action :find_product_type, only: %i[show edit update]
 
   def new
@@ -39,5 +40,9 @@ class ProductTypesController < ApplicationController
 
   def product_type_params
     params.require(:product_type).permit(:name, :description, :product_key)
+  end
+
+  def set_view_name
+    @view_name = 'Tipos de Produtos'
   end
 end

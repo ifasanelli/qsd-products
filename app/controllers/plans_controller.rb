@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  before_action :set_view_name, only: %i[index]
   before_action :product_type_collection, only: :new
   def index
     @plans = Plan.all
@@ -31,5 +32,9 @@ class PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:name, :description, :product_type_id,
                                  :details)
+  end
+
+  def set_view_name
+    @view_name = 'Planos'
   end
 end
