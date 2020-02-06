@@ -1,12 +1,16 @@
 <%= render partial: 'header'%>
+<h1 class='ls-title-intro'> <%= @view_name %> </h1>
+<% if flash[:error]%>
+  <% flash[:error].each do |item| %>
+    <div class="ls-alert-danger"><strong>Atenção!</strong> <%= item %></div>
+  <% end %>
+<% end %>
 
-      <h1 class='ls-title-intro'> <%= @view_name %> </h1>
-        <% if flash[:error]%>
-          <% flash[:error].each do |item| %>
-            <div class="ls-alert-danger"><strong>Atenção!</strong> <%= item %></div>
-          <% end %>
-        <% end %>
-      <%= yield %>
-    
+<main class="ls-main ">
+  <div class="container-fluid">    
+    <%= yield %>
+  </div>  
+
+</main>
 <%= render partial: 'footer'%>
 
