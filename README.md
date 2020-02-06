@@ -1,7 +1,11 @@
 # README
 
-* Ao acessar '/api/v1/product_types', retorna o seguinte JSON com a lista dos
+* Ao acessar  retorna o seguinte JSON com a lista dos
 * tipos de produtos:
+
+### GET '/api/v1/product_types'
+
+```json
 [
   {
     "id": 1,
@@ -28,3 +32,4 @@
     "updated_at": "2020-02-05T19:54:50.001Z"
   }
 ]
+```

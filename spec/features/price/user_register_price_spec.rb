@@ -6,9 +6,10 @@ feature 'user register a new price' do
     create(:periodicity, name: 'Mensal')
 
     visit root_path
-    click_on 'Planos'
-    click_on 'Cadastrar'
-    click_on 'Hospedagem Básica'
+    click_on 'Preços'
+    click_on 'Cadastrar Preço'
+    select 'Hospedagem Básica', from: 'Plano'
+    select 'Mensal', from: 'Periodicidade'
     click_on 'Registrar novo Preço'
     fill_in 'Preço do Plano', with: 132.72
     select 'Hospedagem Básica', from: 'Plano'
