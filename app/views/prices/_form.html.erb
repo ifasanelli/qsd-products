@@ -1,0 +1,9 @@
+<%= form_with model: @price, local: true do |f| %>
+  <%= f.label :plan_id %>
+  <%= f.collection_select :plan_id, @plans, :id, :name %>
+  <%= f.label :periodicity_id %>
+  <%= f.collection_select :periodicity_id, @periodicities, :id, :name %>
+  <%= f.label :plan_price %>
+  <%= f.text_field :plan_price %>
+  <%= f.submit %>
+<% end %>

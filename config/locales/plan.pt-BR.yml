@@ -7,7 +7,9 @@ pt-BR:
       success: "Plano editado com sucesso"
   activerecord:
     models:
-      plan: 'Plano'
+      plan:
+        one: 'Plano'
+        other: 'Planos'
     attributes:
       plan:
         name: 'Nome'
