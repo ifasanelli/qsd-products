@@ -68,10 +68,10 @@
 
         <nav class="ls-menu">
           <ul>
-            <li><%= link_to t_model('periodicity.other'), periodicities_path, class: 'ls-ico-users', title: t_model('periodicity.other')%></li>
-            <li><%= link_to t_model('product_type.other'), product_types_path, class: 'ls-ico-users', title: t_model('product_type.other')%></li>
-            <li><%= link_to t_model('plan.other'), plans_path, class: 'ls-ico-users', title: t_model('plan.other')%></li>
-            <li><%= link_to t_model('price.other'), prices_path, class: 'ls-ico-users', title: t_model('price.other')%></li>
+            <li><%= link_to Periodicity.model_name.human(count: 2), periodicities_path, class: 'ls-ico-users', title: Periodicity.model_name.human(count: 2)%></li>
+            <li><%= link_to ProductType.model_name.human(count: 2), product_types_path, class: 'ls-ico-users', title: ProductType.model_name.human(count: 2)%></li>
+            <li><%= link_to Plan.model_name.human(count: 2), plans_path, class: 'ls-ico-users', title: Plan.model_name.human(count: 2)%></li>
+            <li><%= link_to Price.model_name.human(count: 2), prices_path, class: 'ls-ico-users', title: Price.model_name.human(count: 2)%></li>
             <li>
               <a href="#" class="ls-ico-cog" title="Configurações">Configurações</a>
               <ul>
