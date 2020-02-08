@@ -20,14 +20,14 @@ describe 'Price Management' do
       expect(response).to have_http_status(:ok)
       expect(json[0][:periodicity_id]).to eq(monthly_price.periodicity.id)
       expect(json[0][:plan_id]).to eq(monthly_price.plan.id)
-      expect(json[0][:plan_price]).to eq(monthly_price.plan_price)
+      expect(json[0][:plan_price]).to eq(monthly_price.plan_price.to_s)
       expect(json[1][:periodicity_id]).to eq(quarterly_price.periodicity.id)
       expect(json[1][:plan_id]).to eq(quarterly_price.plan.id)
-      expect(json[1][:plan_price]).to eq(quarterly_price.plan_price)
+      expect(json[1][:plan_price]).to eq(quarterly_price.plan_price.to_s)
       expect(json[2][:periodicity_id]).to eq(semiannual_price.periodicity.id)
       expect(json[2][:plan_id]).to eq(semiannual_price.plan.id)
-      expect(json[2][:plan_price]).to eq(semiannual_price.plan_price)
-      expect(response).not_to have_http_status(:bad_request)
+      expect(json[2][:plan_price]).to eq(semiannual_price.plan_price.to_s)
+      expect(response).not_to have_http_status(:not_found)
     end
 
     it 'renders a blank prices from a plan json successfully' do
@@ -38,7 +38,7 @@ describe 'Price Management' do
 
       expect(response).to have_http_status(:ok)
       expect(json).to eq([])
-      expect(response).not_to have_http_status(:bad_request)
+      expect(response).not_to have_http_status(:not_found)
     end
 
     it 'renders a not found status from a id that doesn\'t exist' do
