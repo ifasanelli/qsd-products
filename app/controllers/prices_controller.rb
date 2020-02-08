@@ -4,6 +4,10 @@ class PricesController < ApplicationController
   def index
   end
 
+  def show
+    @price = Price.find(params[:id])
+  end
+
   def new
     @price = Price.new
   end
@@ -11,7 +15,7 @@ class PricesController < ApplicationController
   def create
     @price = Price.new(price_params)
     @price.save
-    redirect_to root_path, notice: t('.success')
+    redirect_to @price, notice: t('.success')
   end
 
   private

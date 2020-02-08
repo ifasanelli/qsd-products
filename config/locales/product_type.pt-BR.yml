@@ -7,7 +7,9 @@ pt-BR:
       success: "Tipo de Produto editado com sucesso"
   activerecord:
     models:
-      product_type: 'Tipo de Produto'
+      product_type:
+        one: 'Tipo de Produto'
+        other: 'Tipos de Produtos'
     attributes:
       product_type:
         name: 'Nome'

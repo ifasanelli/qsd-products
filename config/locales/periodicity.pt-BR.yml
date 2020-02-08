@@ -1,0 +1,16 @@
+---
+pt-BR:
+  periodicities:
+    create:
+      success: "Periodicidade registrada com sucesso"
+    update:
+      success: "Periodicidade editada com sucesso"
+  activerecord:
+    models:
+      periodicity:
+        one: 'Periodicidade'
+        other: 'Periodicidades'
+    attributes:
+      periodicity:
+        name: 'Nome'
+        period: 'Período em Meses'

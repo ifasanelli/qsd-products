@@ -7,7 +7,9 @@ pt-BR:
       success: "Preço editado com sucesso"
   activerecord:
     models:
-      price: 'Preço'
+      price:
+        one: 'Preço'
+        other: 'Preços'
     attributes:
       price:
         plan_price: 'Preço do Plano'
