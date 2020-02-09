@@ -4,5 +4,6 @@ FactoryBot.define do
     description { 'MyText' }
     product_type
     details { 'MyText' }
+    status { :available }
   end
 end

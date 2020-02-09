@@ -8,13 +8,27 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    return redirect_to plans_path, notice: t('.success') if @plan.save
-
+    return redirect_to plans_path, notice: t('.success') if @plan.available!
+  rescue ActiveRecord::RecordInvalid
     product_type_collection
     render :index
   end
 
+  def unavailable
+    find_plan.unavailable!
+    redirect_back(fallback_location: plans_path)
+  end
+
+  def available
+    find_plan.available!
+    redirect_back(fallback_location: plans_path)
+  end
+
   private
+
+  def find_plan
+    @plan = Plan.find(params[:id])
+  end
 
   def dependencies
     @plans = Plan.all
