@@ -1,7 +1,9 @@
 class PricesController < ApplicationController
-  before_action :load_plans_and_periodicities, only: %i[new create]
+  before_action :load_plans_and_periodicities, only: %i[index new create]
+  before_action :set_view_name, only: %i[index show]
 
   def index
+    @prices = Price.all
   end
 
   def show
@@ -27,5 +29,9 @@ class PricesController < ApplicationController
   def load_plans_and_periodicities
     @plans = Plan.all
     @periodicities = Periodicity.all
+  end
+
+  def set_view_name
+    @view_name = 'Preços'
   end
 end

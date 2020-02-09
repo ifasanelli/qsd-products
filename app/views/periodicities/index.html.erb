@@ -1,18 +1,23 @@
-<% if @periodicities.empty? %>
-  Lista Vazia
-<% end %>
-<% if @periodicity.errors.any? %>
-  <% @periodicity.errors.full_messages.each do |msg| %>
-    <%= msg %>
+  <% if @periodicities.empty? %>
+    Lista Vazia
   <% end %>
-<% end %>
-<h2 class="ls-title-3">Cadastrar Periodicidade <strong></strong></h2>
-<%= render partial: 'form' %>
-<hr>
+
+  <% if @periodicity.errors.any? %>
+  <div class="ls-alert-danger">
+       Você deve corrigir os seguintes erros:
+    <% @periodicity.errors.full_messages.each do |msg| %>
+    <br /><strong><%= msg %></strong>
+    <% end %></div>
+  <% end %>
+
+
 <div class="ls-box">
   <header class="ls-info-header">
-    <h6 class="ls-title-4">Lista de Periodicidades</h6>
+    <h6 class="ls-title-4">Cadastrar Periodicidade</h6>
+    <%= render partial: 'form' %>
   </header>
+  <h6 class="ls-title-4">Lista de Periodicidade:</h6>
+  <hr>
   <% @periodicities.each do |periodicity| %>
     <div class="ls-list">
       <header class="ls-list-header">
@@ -32,4 +37,3 @@
     </div>
   <% end %>
 </div>
-

@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :periodicities, only: %i[index new create edit update]
   resources :product_types, only: %i[index new create show edit update]
-  resources :plans, only: %i[index new create show]
+  resources :plans, only: %i[index new create show edit update]
   resources :prices, only: %i[index new create show]
 
   namespace 'api' do
     namespace 'v1' do
       resources :product_types, only: %i[index]
+      resources :plans, only: %i[index show]
     end
   end
 end
