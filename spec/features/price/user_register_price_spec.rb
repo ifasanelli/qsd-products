@@ -11,7 +11,7 @@ feature 'user register a new price' do
     select 'Hospedagem Básica', from: 'Plano'
     select 'Mensal', from: 'Periodicidade'
     fill_in 'Preço do Plano', with: 132.72
-    click_on 'Criar Preço'
+    click_on 'Salvar'
 
     expect(page).to have_content('Preço registrado com sucesso')
   end

@@ -43,6 +43,6 @@ class ProductTypesController < ApplicationController
   end
 
   def set_view_name
-    @view_name = 'Tipos de Produtos'
+    @view_name = ProductType.model_name.human
   end
 end
