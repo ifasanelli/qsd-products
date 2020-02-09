@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Price Management' do
   context 'show' do
     it 'renders a json with prices from a plan successfully' do
-      plan = create(:plan)
+      plan = build(:plan)
       monthly = build(:periodicity, name: 'Mensal', period: 1)
       quarterly = build(:periodicity, name: 'Trimestral', period: 3)
       semiannual = build(:periodicity, name: 'Semestral', period: 6)

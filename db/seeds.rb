@@ -1,10 +1,20 @@
-ProductType.create(name: 'TESTHOSPTEST41', product_key: 'TST41',
-                    description: 'Descrição do TESTHOSPTEST41')
+product_type = ProductType.create(name: 'TESTHOSPTEST41', product_key: 'TST41',
+                                  description: 'Descrição do TESTHOSPTEST41')
 ProductType.create(name: 'TESTHOSPTEST432', product_key: 'TS432',
                     description: 'Descrição do TESTHOSPTEST432')
 ProductType.create(name: 'TESTHOSPTEST122', product_key: 'TS122',
                     description: 'Descrição do TESTHOSPTEST122')
 
-Periodicity.create(name: "Mensal", period: 1 )
-Periodicity.create(name: "Trimestral", period: 3 )
-Periodicity.create(name: "Semestral", period: 6 )
+five_years_periodicity = Periodicity.create(name: "CincoAnos", period: 60 )
+six_years_periodicity = Periodicity.create(name: "SeisAnos", period: 72 )
+seven_years_periodicity = Periodicity.create(name: "SeteAnos", period: 84 )
+
+plan = Plan.create(name: 'TESTHOSPTEST41 BASICO', description: 'Descrição test',
+                   product_type: product_type, details: 'Detalhe detalhado')
+
+Price.create(plan_price: 4356.87, plan: plan,
+             periodicity: five_years_periodicity)
+Price.create(plan_price: 5351.09, plan: plan,
+             periodicity: six_years_periodicity)
+Price.create(plan_price: 6129.13, plan: plan,
+             periodicity: seven_years_periodicity)
