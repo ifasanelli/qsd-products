@@ -46,12 +46,9 @@ describe 'Price Management' do
       monthly = build(:periodicity, name: 'Mensal', period: 1)
       quarterly = build(:periodicity, name: 'Trimestral', period: 3)
       semiannual = build(:periodicity, name: 'Semestral', period: 6)
-      monthly_price = create(:price, plan_price: 150.32, plan: plan,
-                                     periodicity: monthly)
-      quarterly_price = create(:price, plan_price: 350.34, plan: plan,
-                                       periodicity: quarterly)
-      semiannual_price = create(:price, plan_price: 530.56, plan: plan,
-                                        periodicity: semiannual)
+      create(:price, plan_price: 150.32, plan: plan, periodicity: monthly)
+      create(:price, plan_price: 350.34, plan: plan, periodicity: quarterly)
+      create(:price, plan_price: 530.56, plan: plan, periodicity: semiannual)
 
       get "/api/v1/plans/#{plan.id}/prices"
 
