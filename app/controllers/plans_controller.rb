@@ -11,7 +11,7 @@ class PlansController < ApplicationController
     return redirect_to plans_path, notice: t('.success') if @plan.save
 
     product_type_collection
-    render :new
+    render :index
   end
 
   private
