@@ -34,7 +34,7 @@
 ]
 ```
 
-* planos:
+* Planos:
 
 ### GET '/api/v1/plans'
 
@@ -57,6 +57,22 @@
     "details": "Plano Profissional contendo [x,y,z,a,b]",
     "created_at": "2020-02-08T21:21:46.733Z",
     "updated_at": "2020-02-08T21:21:46.733Z"
+  }
+]
+```
+
+* Periodicidades:
+
+### GET '/api/v1/periodicities'
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Semestral",
+    "period": 6,
+    "created_at": "2020-02-09T03:32:26.393Z",
+    "updated_at": "2020-02-09T03:32:26.393Z"
   }
 ]
 ```

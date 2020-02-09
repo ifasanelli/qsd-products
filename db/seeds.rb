@@ -18,6 +18,8 @@ Plan.create(name: 'Basic', description: 'Plano Básico',
 Plan.create(name: 'Pro', description: 'Plano Profissional',
             product_type: ProductType.find_by_id(1),
             details: 'Plano Profissional contendo [x,y,z,a,b]')
+
+Periodicity.create(name: 'Semestral', period: 6)
 # Periodicity.create(name: "Mensal", period: 1 )
 # Periodicity.create(name: "Trimestral", period: 3 )
 # Periodicity.create(name: "Semestral", period: 6 )
