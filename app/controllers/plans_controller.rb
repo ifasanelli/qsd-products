@@ -40,7 +40,7 @@ class PlansController < ApplicationController
 
   def plan_params
     params.require(:plan).permit(:name, :description, :product_type_id,
-                                 :details)
+                                 :details, :status)
   end
 
   def set_view_name
