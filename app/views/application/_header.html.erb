@@ -13,3 +13,72 @@
     <link rel="icon" sizes="192x192" href="/locawebstyle/assets/images/ico-boilerplate.png">
     <link rel="apple-touch-icon" href="/locawebstyle/assets/images/ico-boilerplate.png">
   </head>
+  <body>
+    <div class="ls-topbar ">
+
+      <!-- Barra de Notificações -->
+      <div class="ls-notification-topbar">
+
+        <!-- Links de apoio -->
+        <div class="ls-alerts-list">
+          <a href="#" class="ls-ico-bell-o" data-counter="8" data-ls-module="topbarCurtain" data-target="#ls-notification-curtain"><span>Notificações</span></a>
+          <a href="#" class="ls-ico-bullhorn" data-ls-module="topbarCurtain" data-target="#ls-help-curtain"><span>Ajuda</span></a>
+          <a href="#" class="ls-ico-question" data-ls-module="topbarCurtain" data-target="#ls-feedback-curtain"><span>Sugestões</span></a>
+        </div>
+
+        <!-- Dropdown com detalhes da conta de usuário -->
+        <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+          <a href="#" class="ls-ico-user">
+            <img src="/locawebstyle/assets/images/locastyle/avatar-example.jpg" alt="" />
+            <span class="ls-name">João Kennedy</span>
+            (johnkennedy)
+          </a>
+
+          <nav class="ls-dropdown-nav ls-user-menu">
+            <ul>
+              <li><a href="#">Meus dados</a></li>
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <span class="ls-show-sidebar ls-ico-menu"></span>
+
+      <a href="/locawebstyle/documentacao/exemplos//pre-painel"  class="ls-go-next"><span class="ls-text">Voltar à lista de serviços</span></a>
+
+      <!-- Nome do produto/marca com sidebar -->
+      <h1 class="ls-brand-name">
+        <%= link_to(root_path, class: 'ls-ico-earth') do %>
+          <small>Uma descrição ou outro nome</small>
+          Produtos
+        <% end %>
+      </h1>
+
+      <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
+    </div>
+
+
+    <aside class="ls-sidebar">
+
+      <div class="ls-sidebar-inner">
+        <a href="/locawebstyle/documentacao/exemplos//pre-painel"  class="ls-go-prev"><span class="ls-text">Voltar à lista de serviços</span></a>
+
+        <nav class="ls-menu">
+          <ul>
+            <li><%= link_to Periodicity.model_name.human(count: 2), periodicities_path, class: 'ls-ico-users', title: Periodicity.model_name.human(count: 2)%></li>
+            <li><%= link_to ProductType.model_name.human(count: 2), product_types_path, class: 'ls-ico-users', title: ProductType.model_name.human(count: 2)%></li>
+            <li><%= link_to Plan.model_name.human(count: 2), plans_path, class: 'ls-ico-users', title: Plan.model_name.human(count: 2)%></li>
+            <li><%= link_to Price.model_name.human(count: 2), prices_path, class: 'ls-ico-users', title: Price.model_name.human(count: 2)%></li>
+            <li>
+              <a href="#" class="ls-ico-cog" title="Configurações">Configurações</a>
+              <ul>
+                <li><a href="/locawebstyle/documentacao/exemplos/painel1/config-domain">Domínios da Revenda</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+
+      </div>
+    </aside>

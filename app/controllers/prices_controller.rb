@@ -16,8 +16,9 @@ class PricesController < ApplicationController
 
   def create
     @price = Price.new(price_params)
-    @price.save
-    redirect_to @price, notice: t('.success')
+    return redirect_to @price, notice: t('.success') if @price.save
+
+    render :new
   end
 
   private
