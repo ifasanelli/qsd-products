@@ -1,5 +1,5 @@
 # README
-
+(seeds)
 * Ao acessar  retorna o seguinte JSON com a lista dos
 * tipos de produtos:
 
@@ -30,6 +30,49 @@
     "product_key": "TS122",
     "created_at": "2020-02-05T19:54:50.001Z",
     "updated_at": "2020-02-05T19:54:50.001Z"
+  }
+]
+```
+
+* Planos:
+
+### GET '/api/v1/plans'
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Basic",
+    "description": "Plano Básico",
+    "product_type_id": 1,
+    "details": "Plano básico contendo [x,y,z]",
+    "created_at": "2020-02-08T21:21:46.398Z",
+    "updated_at": "2020-02-08T21:21:46.398Z"
+  },
+  {
+    "id": 2,
+    "name": "Pro",
+    "description": "Plano Profissional",
+    "product_type_id": 1,
+    "details": "Plano Profissional contendo [x,y,z,a,b]",
+    "created_at": "2020-02-08T21:21:46.733Z",
+    "updated_at": "2020-02-08T21:21:46.733Z"
+  }
+]
+```
+
+* Periodicidades:
+
+### GET '/api/v1/periodicities'
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Semestral",
+    "period": 6,
+    "created_at": "2020-02-09T03:32:26.393Z",
+    "updated_at": "2020-02-09T03:32:26.393Z"
   }
 ]
 ```
