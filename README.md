@@ -63,3 +63,41 @@
   }
 ]
 ```
+
+### GET '/api/v1/plans'
+* Ao acessar retorna o seguinte JSON com a lista de planos:
+
+```json
+    "name": "Basic",
+    "description": "Plano Básico",
+    "product_type_id": 1,
+    "details": "Plano básico contendo [x,y,z]",
+    "created_at": "2020-02-08T21:21:46.398Z",
+    "updated_at": "2020-02-08T21:21:46.398Z"
+  },
+  {
+    "id": 2,
+    "name": "Pro",
+    "description": "Plano Profissional",
+    "product_type_id": 1,
+    "details": "Plano Profissional contendo [x,y,z,a,b]",
+    "created_at": "2020-02-08T21:21:46.733Z",
+    "updated_at": "2020-02-08T21:21:46.733Z"
+  }
+]
+```
+
+### GET '/api/v1/periodicities'
+* Ao acessar retorna o seguinte JSON com a lista de periodicidades:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Semestral",
+    "period": 6,
+    "created_at": "2020-02-09T03:32:26.393Z",
+    "updated_at": "2020-02-09T03:32:26.393Z"
+  }
+]
+```
