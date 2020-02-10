@@ -18,3 +18,13 @@ Price.create(plan_price: 5351.09, plan: plan,
              periodicity: six_years_periodicity)
 Price.create(plan_price: 6129.13, plan: plan,
              periodicity: seven_years_periodicity)
+Plan.create(name: 'Basic', description: 'Plano Básico',
+            product_type: ProductType.find_by_id(1),
+            details: 'Plano básico contendo [x,y,z]')
+
+Plan.create(name: 'Pro', description: 'Plano Profissional',
+            product_type: ProductType.find_by_id(1),
+            details: 'Plano Profissional contendo [x,y,z,a,b]')
+# Periodicity.create(name: "Mensal", period: 1 )
+# Periodicity.create(name: "Trimestral", period: 3 )
+# Periodicity.create(name: "Semestral", period: 6 )
