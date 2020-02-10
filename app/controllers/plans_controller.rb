@@ -1,7 +1,8 @@
 class PlansController < ApplicationController
   before_action :set_view_name, only: %i[index]
-  before_action :dependencies, only: %i[create index]
-  before_action :product_type_collection, only: %i[index]
+  before_action :dependencies, only: %i[create index edit]
+  before_action :product_type_collection, only: %i[index edit update]
+  before_action :find_plan, only: %i[edit update]
 
   def index
     @plan = Plan.new
@@ -13,6 +14,16 @@ class PlansController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     product_type_collection
     render :index
+  end
+
+  def edit
+  end
+
+  def update
+    return redirect_to plans_path, notice: t('.success')\
+                       if @plan.update(plan_params)
+
+    render :edit
   end
 
   def unavailable

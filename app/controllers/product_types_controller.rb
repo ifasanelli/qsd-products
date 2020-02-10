@@ -21,7 +21,7 @@ class ProductTypesController < ApplicationController
 
   def update
     @product_type.product_key.upcase!
-    return redirect_to product_types_path, notice: t('.success') \
+    return redirect_to product_types_path, notice: t('.success')\
                        if @product_type.update(product_type_params)
 
     render :edit

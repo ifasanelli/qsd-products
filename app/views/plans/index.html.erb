@@ -13,10 +13,10 @@
     <div class="ls-list">
       <header class="ls-list-header">
         <div class="ls-list-title col-md-9">
-          <%= link_to plan.name, root_path %>
+          <%= link_to plan.name, edit_plan_path(plan) %>
         </div>
         <div class="col-md-3 ls-txt-right">
-          <%= link_to 'Alterar', root_path, class:"ls-btn-primary" %>
+          <%= link_to 'Alterar', edit_plan_path(plan), class:"ls-btn-primary" %>
         </div>
       </header>
       <div class="ls-list-content ">
