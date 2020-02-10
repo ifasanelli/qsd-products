@@ -19,6 +19,9 @@ feature 'user register a new price' do
   end
 
   scenario 'return error message if can\'t register' do
+    user = create(:user)
+
+    login_as user, scope: :user
     visit root_path
 
     click_on 'Preços'
