@@ -2,6 +2,7 @@ class PlansController < ApplicationController
   before_action :set_view_name, only: %i[index]
   before_action :dependencies, only: %i[create index]
   before_action :product_type_collection, only: %i[index]
+
   def index
     @plan = Plan.new
   end
