@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Product Type Management' do
+describe 'Plan view api' do
   context 'index' do
     it 'renders a json successfully' do
       product_type = create(:product_type)

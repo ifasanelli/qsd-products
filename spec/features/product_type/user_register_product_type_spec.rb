@@ -12,7 +12,7 @@ feature 'user register a new product type' do
     fill_in 'Descrição', with: 'É um espaço em servidor fornecido pela Locaweb'\
                                ' para que você possa armazenar o seu site.'
     fill_in 'Chave do Produto', with: 'HOSP'
-    click_on 'Criar Tipo de Produto'
+    click_on 'Salvar'
 
     expect(page).to have_content('Tipo de Produto registrado com sucesso')
     expect(page).to have_content('Hospedagem')
@@ -28,7 +28,7 @@ feature 'user register a new product type' do
     visit root_path
     click_on 'Tipos de Produtos'
     click_on 'Registrar novo Tipo de Produto'
-    click_on 'Criar Tipo de Produto'
+    click_on 'Salvar'
 
     expect(page).to have_content('Você deve corrigir os seguintes erros')
     expect(page).not_to have_content('Hospedagem')
