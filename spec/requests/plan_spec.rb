@@ -1,10 +1,6 @@
 require 'rails_helper'
 
-<<<<<<< HEAD
 describe 'Plan Management' do
-=======
-describe 'Plan view api' do
->>>>>>> api_plan_prices
   context 'index' do
     it 'renders a json successfully' do
       plan = create(:plan, name: 'Hospedagem XPto', description: 'etc',
