@@ -1,5 +1,5 @@
 <% if @plan.errors.any? %>
-  Você deve corrigir os seguintes erros
+  Você deve corrigir os seguintes erros:
  <% @plan.errors.full_messages.each do |message| %>
   <%= message %>
  <% end %>
@@ -13,6 +13,6 @@
   <%= f.label :product_type_id %>
  <%= f.collection_select :product_type_id, @product_types, :id, :name %>
  <%= f.label :details %>
- <%= f.text_area :details %> 
+ <%= f.text_area :details %>
  <%= f.submit %>
 <% end %>

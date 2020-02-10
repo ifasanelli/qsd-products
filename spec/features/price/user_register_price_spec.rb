@@ -15,4 +15,15 @@ feature 'user register a new price' do
 
     expect(page).to have_content('Preço registrado com sucesso')
   end
+
+  scenario 'return error message if can\'t register' do
+    visit root_path
+
+    click_on 'Preços'
+    click_on 'Registrar novo Preço'
+    click_on 'Criar Preço'
+
+    expect(page).to have_content('Você deve corrigir os seguintes erros')
+    expect(page).not_to have_content('Preço registrado com sucesso')
+  end
 end
