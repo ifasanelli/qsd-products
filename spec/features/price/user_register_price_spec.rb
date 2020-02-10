@@ -7,7 +7,7 @@ feature 'user register a new price' do
 
     visit root_path
     click_on 'Preços'
-    click_on 'Registrar novo Preço'
+    click_on 'Registrar novo preço'
     select 'Hospedagem Básica', from: 'Plano'
     select 'Mensal', from: 'Periodicidade'
     fill_in 'Preço do Plano', with: 132.72

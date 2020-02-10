@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :periodicities, only: %i[index new create edit update]
   resources :product_types, only: %i[index new create show edit update]
   resources :plans, only: %i[index new create show]
-  resources :prices, only: %i[index new create show]
+  resources :prices, only: %i[index new create show edit update]
 
   namespace 'api' do
     namespace 'v1' do

@@ -1,9 +1,37 @@
-<%= form_with model: @price, local: true do |f| %>
+<% if @price.errors.any? %>
+  <div class="ls-alert-danger">
+    <%= t(:validation_error, scope: [:application_view, :messages]) %>
+  </div>
+  <ul>
+    <% @price.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
+
+<br>
+
+<%= form_with model: @price, local: true, class: "ls-form-horizontal" do |f| %>
+<label class="ls-label col-md-3">
   <%= f.label :plan_id %>
-  <%= f.collection_select :plan_id, @plans, :id, :name %>
+    <p class="ls-label-info"></p>
+  <%= f.collection_select :plan_id, @plans, :id, :name, class: "ls-custom" %>
+</label>
+
+<label class="ls-label col-md-3">
   <%= f.label :periodicity_id %>
-  <%= f.collection_select :periodicity_id, @periodicities, :id, :name %>
+  <p class="ls-label-info"></p>
+  <%= f.collection_select :periodicity_id, @periodicities, :id, :name,
+                                                         class: "ls-custom" %>
+</label>
+
+<label class="ls-label col-md-3">
   <%= f.label :plan_price %>
   <%= f.text_field :plan_price %>
-  <%= f.submit %>
+</label>
+
+<div class="ls-actions-btn">
+  <%= f.submit class: 'ls-btn-primary' %>
+</div>
 <% end %>
