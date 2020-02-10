@@ -1,8 +1,15 @@
-<!DOCTYPE html>
-<html class="ls-theme-blue">
-<%= render partial: 'header' %>
+<%= render partial: 'header'%>
+<h1 class='ls-title-intro'> <%= @view_name %> </h1>
+<% if flash[:error]%>
+  <% flash[:error].each do |item| %>
+    <div class="ls-alert-danger"><strong>Atenção!</strong> <%= item %></div>
+  <% end %>
+<% end %>
 
+<main class="ls-main ">
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
 
-
-<%= render partial: 'body'%>
-</html>
+</main>
+<%= render partial: 'footer'%>
