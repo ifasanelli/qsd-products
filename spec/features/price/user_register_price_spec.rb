@@ -4,7 +4,9 @@ feature 'user register a new price' do
   scenario 'succesfully' do
     create(:plan, name: 'Hospedagem Básica')
     create(:periodicity, name: 'Mensal')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Preços'
     click_on 'Registrar novo Preço'

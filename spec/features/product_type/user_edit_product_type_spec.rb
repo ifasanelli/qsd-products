@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'user edit a product type' do
   scenario 'successfully' do
     create(:product_type, name: 'Hospedagem')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Tipos de Produtos'
     click_on 'Hospedagem'
@@ -21,7 +23,9 @@ feature 'user edit a product type' do
 
   scenario 'return error message if can\'t edit' do
     create(:product_type, name: 'Hospedagem')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Tipos de Produtos'
     click_on 'Hospedagem'

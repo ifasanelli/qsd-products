@@ -6,7 +6,9 @@ feature 'user edit a plan' do
                                          product_key: 'HOSP')
     create(:plan, name: 'Hospedagem Básica', product_type: product_type)
     create(:product_type, name: 'Email', product_key: 'EMAIL')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
     click_on 'Hospedagem Básica'

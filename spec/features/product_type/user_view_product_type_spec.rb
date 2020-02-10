@@ -4,7 +4,9 @@ feature 'User view product types' do
   scenario 'view a list with all product types' do
     create(:product_type, name: 'Hospedagem', product_key: 'HOSP')
     create(:product_type, name: 'Email', product_key: 'EMAIL')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Tipos de Produtos'
 
