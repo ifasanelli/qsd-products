@@ -1,7 +1,3 @@
-<%= flash[:notice]%>
+<h2 class="ls-title-3"> Editar Plano <strong></strong></h2>
 
-<%= flash.each do |value| %>
- <div><%= value %></div>
-<% end %>
-
-<%= render 'form', locals: true %>
+<%= render partial: 'form', locals: { plan: @plan } %>
