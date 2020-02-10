@@ -1,33 +1,27 @@
 class PeriodicitiesController < ApplicationController
   before_action :set_view_name, only: %i[index edit]
   before_action :dependencies, only: %i[create index edit]
+  before_action :find_periodicity, only: %i[edit update]
 
   def index
-    @periodicities = Periodicity.all
     @periodicity = Periodicity.new
   end
 
   def create
     @periodicity = Periodicity.new(periodicity_params)
-    if @periodicity.save
-      redirect_to periodicities_path
-    else
-      render 'index'
-    end
+    return redirect_to periodicities_path if @periodicity.save
+
+    render :index
   end
 
   def edit
-    @periodicity = Periodicity.find(params[:id])
   end
 
   def update
-    @periodicity = Periodicity.find(params[:id])
+    return redirect_to periodicities_path if\
+                       @periodicity.update(periodicity_params)
 
-    if @periodicity.update(periodicity_params)
-      redirect_to periodicities_path
-    else
-      render 'edit'
-    end
+    render :edit
   end
 
   private
@@ -38,5 +32,13 @@ class PeriodicitiesController < ApplicationController
 
   def periodicity_params
     params.require(:periodicity).permit(:name, :period)
+  end
+
+  def find_periodicity
+    @periodicity = Periodicity.find(params[:id])
+  end
+
+  def set_view_name
+    @view_name = Periodicity.model_name.human
   end
 end
