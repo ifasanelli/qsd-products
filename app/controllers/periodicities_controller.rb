@@ -1,5 +1,5 @@
 class PeriodicitiesController < ApplicationController
-  before_action :set_view_name, only: %i[index edit]
+  before_action :set_view_name, only: %i[index edit edit]
   before_action :dependencies, only: %i[create index edit]
   before_action :find_periodicity, only: %i[edit update]
 
@@ -18,8 +18,8 @@ class PeriodicitiesController < ApplicationController
   end
 
   def update
-    return redirect_to periodicities_path if\
-                       @periodicity.update(periodicity_params)
+    return redirect_to periodicities_path\
+                       if @periodicity.update(periodicity_params)
 
     render :edit
   end

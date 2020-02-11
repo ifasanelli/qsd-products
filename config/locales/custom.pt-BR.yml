@@ -1,0 +1,5 @@
+---
+pt-BR:
+  status:
+    available: 'Disponível'
+    unavailable: 'Indisponível'

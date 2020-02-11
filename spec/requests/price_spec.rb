@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'Price Management' do
   context 'show' do
     it 'renders a json with prices from a plan successfully' do
-      plan = build(:plan)
-      monthly = build(:periodicity, name: 'Mensal', period: 1)
-      quarterly = build(:periodicity, name: 'Trimestral', period: 3)
-      semiannual = build(:periodicity, name: 'Semestral', period: 6)
+      plan = create(:plan)
+      monthly = create(:periodicity, name: 'Mensal', period: 1)
+      quarterly = create(:periodicity, name: 'Trimestral', period: 3)
+      semiannual = create(:periodicity, name: 'Semestral', period: 6)
       monthly_price = create(:price, plan_price: 150.32, plan: plan,
                                      periodicity: monthly)
       quarterly_price = create(:price, plan_price: 350.34, plan: plan,
@@ -39,6 +39,21 @@ describe 'Price Management' do
       expect(response).to have_http_status(:ok)
       expect(json).to eq([])
       expect(response).not_to have_http_status(:not_found)
+    end
+
+    it 'renders a not found status if a plan is unavailable' do
+      plan = build(:plan, status: :unavailable)
+      monthly = build(:periodicity, name: 'Mensal', period: 1)
+      quarterly = build(:periodicity, name: 'Trimestral', period: 3)
+      semiannual = build(:periodicity, name: 'Semestral', period: 6)
+      create(:price, plan_price: 150.32, plan: plan, periodicity: monthly)
+      create(:price, plan_price: 350.34, plan: plan, periodicity: quarterly)
+      create(:price, plan_price: 530.56, plan: plan, periodicity: semiannual)
+
+      get "/api/v1/plans/#{plan.id}/prices"
+
+      expect(response).to have_http_status(:not_found)
+      expect(response).not_to have_http_status(:ok)
     end
 
     it 'renders a not found status from a id that doesn\'t exist' do

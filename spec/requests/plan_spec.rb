@@ -1,35 +1,23 @@
 require 'rails_helper'
 
-describe 'Plan view api' do
-  context 'index' do
+describe 'Plan Management' do
+  context 'show' do
     it 'renders a json successfully' do
-      product_type = create(:product_type)
+      plan = create(:plan, name: 'Hospedagem XPto', description: 'etc',
+                           details: '123')
 
-      basic_plan = Plan.create(name: 'Small', description: 'Plano basico',
-                               product_type: product_type,
-                               details: 'Plano básico contendo [x,y,z]')
-
-      pro_plan = Plan.create(name: 'Pro', description: 'Plano Profissional',
-                             product_type: product_type,
-                             details: 'Plano Profissional contendo [x,y,z,a,b]')
-      get api_v1_plans_path
+      get api_v1_plan_path(plan)
       json = JSON.parse(response.body, symbolize_names: true)
+
       expect(response).to have_http_status(:ok)
-      expect(json[0][:name]).to eq(basic_plan.name)
-      expect(json[0][:description]).to eq(basic_plan.description)
-      expect(json[0][:details]).to eq(basic_plan.details)
-      expect(json[1][:name]).to eq(pro_plan.name)
-      expect(json[1][:description]).to eq(pro_plan.description)
-      expect(json[1][:details]).to eq(pro_plan.details)
+      expect(json[:name]).to eq(plan.name)
+      expect(json[:description]).to eq(plan.description)
+      expect(json[:details]).to eq(plan.details)
+      expect(json[:product_type_id]).to eq(plan.product_type_id)
     end
-
-    it 'renders a blank json successfully' do
-      get api_v1_plans_path
-      json = JSON.parse(response.body, symbolize_names: true)
-
-      expect(response).to have_http_status(:ok)
-      expect(json).to eq([])
-      expect(response).not_to have_http_status(:bad_request)
+    it 'renders a json failed - car not exists' do
+      get api_v1_plan_path(100)
+      expect(response).to have_http_status(404)
     end
   end
 end

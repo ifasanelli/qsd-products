@@ -1,0 +1,7 @@
+<%= flash[:notice]%>
+
+<%= flash.each do |value| %>
+  <div><%= value %></div>
+<% end %>
+
+<%= render 'form', locals: true %>

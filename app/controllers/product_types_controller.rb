@@ -1,24 +1,19 @@
 class ProductTypesController < ApplicationController
   before_action :set_view_name, only: %i[index edit]
-  before_action :find_product_type, only: %i[show edit update]
+  before_action :dependencies, only: %i[create index edit]
+  before_action :find_product_type, only: %i[edit update]
 
-  def new
+  def index
     @product_type = ProductType.new
   end
 
   def create
     @product_type = ProductType.new(product_type_params)
     @product_type.product_key.upcase!
-    return redirect_to @product_type,
+    return redirect_to product_types_path,
                        notice: t('.success') if @product_type.save
-    render :new
-  end
 
-  def show
-  end
-
-  def index
-    @product_types = ProductType.all
+    render :index
   end
 
   def edit
@@ -26,13 +21,17 @@ class ProductTypesController < ApplicationController
 
   def update
     @product_type.product_key.upcase!
-    return redirect_to @product_type, notice: t('.success') \
-             if @product_type.update(product_type_params)
+    return redirect_to product_types_path, notice: t('.success') \
+                       if @product_type.update(product_type_params)
 
     render :edit
   end
 
   private
+
+  def dependencies
+    @product_types = ProductType.all
+  end
 
   def find_product_type
     @product_type = ProductType.find(params[:id])

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_184911) do
     t.text "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
     t.index ["product_type_id"], name: "index_plans_on_product_type_id"
   end
 

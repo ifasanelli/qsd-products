@@ -1,1 +1,11 @@
+<% if @prices.empty? %>
+  Lista Vazia
+<% end %>
+
+
+<% @prices.each do |price| %>
+<%= link_to "#{price.plan.name} - #{price.periodicity.name} - #{price.plan_price}", price %><br \><br \>
+<% end %>
+
+
 <%= link_to 'Registrar novo Preço', new_price_path %>
