@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :plans, only: %i[index show] do
         resources :prices, only: %i[index]
       end
+      resources :periodicities, only: %i[index]
     end
   end
 end
