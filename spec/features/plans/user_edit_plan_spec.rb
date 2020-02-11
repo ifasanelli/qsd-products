@@ -4,7 +4,9 @@ feature 'user edit a plan' do
   scenario 'successfully' do
     create(:product_type, name: 'Email1', product_key: 'MAIL1')
     create(:plan, name: 'Hospedagem Básica')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
     click_on 'Alterar'
@@ -21,7 +23,9 @@ feature 'user edit a plan' do
   end
   scenario 'failed - cant be blank' do
     create(:plan, name: 'Hospedagem Básica')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
     click_on 'Alterar'

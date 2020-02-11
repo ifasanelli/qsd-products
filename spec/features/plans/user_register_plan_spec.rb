@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'user register a new plan' do
   scenario 'succesfully' do
     create(:product_type, name: 'Hospedagem')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
     fill_in 'Nome', with: 'Hospedagem Básica'
@@ -22,8 +24,10 @@ feature 'user register a new plan' do
   end
 
   scenario 'return error message if can\'t register' do
-    visit root_path
+    user = create(:user)
 
+    login_as user, scope: :user
+    visit root_path
     click_on 'Planos'
     click_on 'Salvar'
 

@@ -6,7 +6,9 @@ feature 'User view plans' do
     create(:plan, name: 'Hospedagem Básica', product_type: product_type)
     create(:plan, name: 'Hospedagem Profissional', product_type: product_type)
     create(:plan, name: 'Hospedagem Elite', product_type: product_type)
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
 
@@ -18,6 +20,9 @@ feature 'User view plans' do
   end
 
   scenario 'and see none plan' do
+    user = create(:user)
+
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
 
@@ -29,7 +34,9 @@ feature 'User view plans' do
     create(:plan, name: 'Hospedagem Básica', product_type: product_type,
                   description: 'Hospedagem de sites do tipo econômica.',
                   details: 'Detalhes referentes a Hospedagem Básica.')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
 

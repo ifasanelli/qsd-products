@@ -4,7 +4,9 @@ describe 'User edit periodicity' do
   context 'periodicity' do
     it 'fill form with data' do
       create(:periodicity, name: 'X', period: 33)
+      user = create(:user)
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidades'
       click_on 'Alterar'
@@ -14,7 +16,9 @@ describe 'User edit periodicity' do
     end
     it 'successfully' do
       create(:periodicity, name: 'X', period: 33)
+      user = create(:user)
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidades'
       click_on 'Alterar'
@@ -28,7 +32,9 @@ describe 'User edit periodicity' do
 
     it 'fields cant be blank' do
       create(:periodicity, name: 'X', period: 33)
+      user = create(:user)
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidades'
       click_on 'Alterar'
@@ -40,7 +46,9 @@ describe 'User edit periodicity' do
 
     it 'must be unique' do
       create(:periodicity, name: 'Anual', period: '12')
+      user = create(:user)
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidades'
       fill_in 'Nome', with: 'Anual'

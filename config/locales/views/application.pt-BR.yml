@@ -1,0 +1,9 @@
+---
+pt-BR:
+  application_view:
+    buttons:
+      edit: 'Editar'
+      delete: 'Deletar'
+    messages:
+      confirm?: 'Tem certeza?'
+      validation_error: 'Você deve corrigir os seguintes erros para continuar'
