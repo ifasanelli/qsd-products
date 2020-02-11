@@ -1,20 +1,40 @@
-product_type = ProductType.create(name: 'TESTHOSPTEST41', product_key: 'TST41',
-                                  description: 'Descrição do TESTHOSPTEST41')
-ProductType.create(name: 'TESTHOSPTEST432', product_key: 'TS432',
-                    description: 'Descrição do TESTHOSPTEST432')
-ProductType.create(name: 'TESTHOSPTEST122', product_key: 'TS122',
-                    description: 'Descrição do TESTHOSPTEST122')
+product_type_hosp = ProductType.create(name: 'Hospedagem', product_key: 'HOSP',
+                                  description: 'Serviço - hospedagem')
+product_type_email = ProductType.create(name: 'Email', product_key: 'MAIL',
+                    description: 'Serviço - e-mail')
+product_type_emkt = ProductType.create(name: 'Email Marketing', 
+                                       product_key: 'EMKT', 
+                                       description: 'Serviço - email marketing')
 
-five_years_periodicity = Periodicity.create(name: "CincoAnos", period: 60 )
-six_years_periodicity = Periodicity.create(name: "SeisAnos", period: 72 )
-seven_years_periodicity = Periodicity.create(name: "SeteAnos", period: 84 )
+monthly_periodicity = Periodicity.create(name: "Mensal", period: 1 )
+bimonthly_periodicity = Periodicity.create(name: "Bimestral", period: 2 )
+semiannual_periodicity = Periodicity.create(name: "Semestral", period: 6 )
+annual_periodicity = Periodicity.create(name: "Anual", period: 12 )
 
-plan = Plan.create(name: 'TESTHOSPTEST41 BASICO', description: 'Descrição test',
-                   product_type: product_type, details: 'Detalhe detalhado')
 
-Price.create(plan_price: 4356.87, plan: plan,
-             periodicity: five_years_periodicity)
-Price.create(plan_price: 5351.09, plan: plan,
-             periodicity: six_years_periodicity)
-Price.create(plan_price: 6129.13, plan: plan,
-             periodicity: seven_years_periodicity)
+plan_l = Plan.create(name: 'Linux', description: 'Hospedagem Linux',
+            product_type: product_type_hosp, details: '10 sites')
+
+plan_w = Plan.create(name: 'Windows', description: 'Hospedagem Windows',
+            product_type: product_type_hosp, details: '10 sites')
+    
+plan_e = Plan.create(name: 'PostFix', description: 'Email',
+            product_type: product_type_email, details: '1 email')
+
+plan_m = Plan.create(name: 'LocaMarketing', 
+                     description: 'Software de email marketing',
+                     product_type: product_type_emkt, details: 'envio 10/h')
+
+
+
+Price.create(plan_price: 4356.87, plan: plan_l,
+              periodicity: monthly_periodicity)
+
+Price.create(plan_price: 5351.09, plan: plan_w,
+              periodicity: bimonthly_periodicity)
+
+Price.create(plan_price: 6129.13, plan: plan_e,
+              periodicity: semiannual_periodicity)
+
+Price.create(plan_price: 6129.13, plan: plan_m,
+             periodicity: annual_periodicity)
