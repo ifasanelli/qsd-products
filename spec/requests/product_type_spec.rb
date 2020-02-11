@@ -27,5 +27,26 @@ describe 'Product Type Management' do
       expect(json).to eq([])
       expect(response).not_to have_http_status(:bad_request)
     end
+    it 'renders plans from a product' do
+      product_type = create(:product_type)
+
+      basic_plan = Plan.create(name: 'Small', description: 'Plano basico',
+                               product_type: product_type,
+                               details: 'Plano básico contendo [x,y,z]')
+
+      pro_plan = Plan.create(name: 'Pro', description: 'Plano Profissional',
+                             product_type: product_type,
+                             details: 'Plano Profissional contendo [x,y,z,a,b]')
+
+      get api_v1_product_type_path(product_type[:id])
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(:ok)
+      expect(json[0][:name]).to eq(basic_plan.name)
+      expect(json[0][:description]).to eq(basic_plan.description)
+      expect(json[0][:details]).to eq(basic_plan.details)
+      expect(json[1][:name]).to eq(pro_plan.name)
+      expect(json[1][:description]).to eq(pro_plan.description)
+      expect(json[1][:details]).to eq(pro_plan.details)
+    end
   end
 end
