@@ -6,7 +6,7 @@ describe 'User edit periodicity' do
       create(:periodicity, name: 'X', period: 33)
 
       visit root_path
-      click_on 'Periodicidade'
+      click_on 'Periodicidades'
       click_on 'Alterar'
 
       expect(page).to have_field('Nome', with: 'X')
@@ -16,7 +16,7 @@ describe 'User edit periodicity' do
       create(:periodicity, name: 'X', period: 33)
 
       visit root_path
-      click_on 'Periodicidade'
+      click_on 'Periodicidades'
       click_on 'Alterar'
       fill_in 'Nome', with: 'Anual'
       fill_in 'Período', with: 12
@@ -30,7 +30,7 @@ describe 'User edit periodicity' do
       create(:periodicity, name: 'X', period: 33)
 
       visit root_path
-      click_on 'Periodicidade'
+      click_on 'Periodicidades'
       click_on 'Alterar'
       fill_in 'Nome', with: ''
       fill_in 'Período', with: ''
@@ -42,7 +42,7 @@ describe 'User edit periodicity' do
       create(:periodicity, name: 'Anual', period: '12')
 
       visit root_path
-      click_on 'Periodicidade'
+      click_on 'Periodicidades'
       fill_in 'Nome', with: 'Anual'
       fill_in 'Período', with: 12
       click_on 'Salvar'

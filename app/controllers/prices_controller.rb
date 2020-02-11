@@ -33,6 +33,6 @@ class PricesController < ApplicationController
   end
 
   def set_view_name
-    @view_name = 'Preços'
+    @view_name = Price.model_name.human
   end
 end

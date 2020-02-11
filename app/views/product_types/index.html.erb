@@ -1,5 +1,36 @@
-<% @product_types.each do |product_type| %>
-  <%= link_to product_type.name, product_type %>
+<%= flash[:notice] %>
+<% if @product_types.empty? %>
+  Lista Vazia
 <% end %>
-
-<%= link_to 'Registrar novo Tipo de Produto', new_product_type_path %>
+<h2 class="ls-title-3"> Cadastrar Tipo de Produto <strong></strong></h2>
+<%= render partial: 'form' %>
+<hr>
+<div class="ls-box">
+  <header class="ls-info-header">
+    <h6 class="ls-title-4">Lista de Tipos de Produtos </h6>
+  </header>
+  <% @product_types.each do |product_type| %>
+    <div class="ls-list">
+      <header class="ls-list-header">
+        <div class="ls-list-title col-md-9">
+          <%= link_to product_type.name, edit_product_type_path(product_type) %>
+        </div>
+        <div class="col-md-3 ls-txt-right">
+          <%= link_to 'Alterar', edit_product_type_path(product_type), class:"ls-btn-primary" %>
+        </div>
+      </header>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= ProductType.human_attribute_name('description') %></span>
+          <strong><%= product_type.description %></strong>
+        </div>
+      </div>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= ProductType.human_attribute_name('product_key') %></span>
+          <strong><%= product_type.product_key %></strong>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
