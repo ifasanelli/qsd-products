@@ -1,0 +1,10 @@
+---
+pt-BR:
+  price_view:
+    title:
+      editing_price: 'Editando Preço'
+      new_price: 'Novo Preço'
+    buttons:
+      register: 'Registrar novo preço'
+    messages:
+      validation_error: 'Você deve corrigir os seguintes erros para continuar'

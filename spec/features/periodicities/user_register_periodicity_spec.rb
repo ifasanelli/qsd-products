@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'User register periodicity' do
   context 'periodicity' do
     it 'successfully' do
+      user = create(:user)
+
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidade'
       fill_in 'Nome', with: 'Anual'
@@ -12,6 +15,9 @@ describe 'User register periodicity' do
       expect(page).to have_content('12')
     end
     it 'fields cant be blank' do
+      user = create(:user)
+
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidade'
       click_on 'Salvar'
@@ -20,6 +26,9 @@ describe 'User register periodicity' do
 
     it 'must be unique' do
       create(:periodicity, name: 'Anual', period: '12')
+      user = create(:user)
+
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidade'
       fill_in 'Nome', with: 'Anual'

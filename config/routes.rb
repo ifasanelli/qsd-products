@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :plans, only: %i[index create edit update] do
     post 'unavailable', 'available', on: :member
   end
-  resources :prices, only: %i[index new create show]
+  resources :prices, only: %i[index create edit update]
 
   namespace 'api' do
     namespace 'v1' do

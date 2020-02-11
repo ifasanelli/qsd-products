@@ -2,8 +2,10 @@ require 'rails_helper'
 
 feature 'user register a new product type' do
   scenario 'succesfully' do
-    visit root_path
+    user = create(:user)
 
+    login_as user, scope: :user
+    visit root_path
     click_on 'Tipos de Produtos'
     fill_in 'Nome', with: 'Hospedagem'
     fill_in 'Descrição', with: 'É um espaço em servidor fornecido pela Locaweb'\
@@ -19,8 +21,10 @@ feature 'user register a new product type' do
   end
 
   scenario 'return error message if can\'t register' do
-    visit root_path
+    user = create(:user)
 
+    login_as user, scope: :user
+    visit root_path
     click_on 'Tipos de Produtos'
     click_on 'Salvar'
 
