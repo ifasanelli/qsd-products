@@ -1,5 +1,5 @@
 class PeriodicitiesController < ApplicationController
-  before_action :set_view_name, only: %i[index edit]
+  before_action :set_view_name, only: %i[index edit edit]
   before_action :dependencies, only: %i[create index edit]
 
   def index

@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
-  before_action :set_view_name, only: %i[index]
-  before_action :product_type_collection, only: :new
+  before_action :set_view_name, only: %i[index edit show]
+  before_action :product_type_collection, only: %i[new create edit update]
+
   def index
     @plans = Plan.all
   end
@@ -11,16 +12,26 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
-    @product_types = ProductType.all
   end
 
   def create
     @plan = Plan.new(plan_params)
-    return redirect_to @plan,
-                       notice: t('.success') if @plan.save
+    return redirect_to @plan, notice: t('.success') if @plan.save
 
-    @product_types = ProductType.all
     render :new
+  end
+
+  def edit
+    @plan = Plan.find_by(params[:id])
+  end
+
+  def update
+    @plan = Plan.find_by(params[:id])
+    if @plan.update(plan_params)
+      redirect_to @plan, notice: 'editado com sucesso'
+    else
+      render :edit
+    end
   end
 
   private

@@ -13,4 +13,4 @@ pt-BR:
     attributes:
       periodicity:
         name: 'Nome'
-        period: 'Período em Meses'
+        period: 'Período'

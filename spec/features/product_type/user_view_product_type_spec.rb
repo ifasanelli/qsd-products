@@ -11,4 +11,10 @@ feature 'User view product types' do
     expect(page).to have_link('Hospedagem')
     expect(page).to have_link('Email')
   end
+  xscenario 'have no one product type' do
+    visit root_path
+    click_on 'Tipos de Produtos'
+
+    expect(page).to have_content('Lista Vazia')
+  end
 end

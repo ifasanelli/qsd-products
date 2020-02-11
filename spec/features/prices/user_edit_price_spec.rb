@@ -18,7 +18,7 @@ feature 'User edit price' do
     click_on 'Atualizar Preço'
 
     expect(page).to have_content('Preço atualizado com sucesso')
-    expect(page).to have_content(/29.97/)
+    expect(page).to have_content(29.97)
     expect(page).to have_content('Trimestral')
   end
 

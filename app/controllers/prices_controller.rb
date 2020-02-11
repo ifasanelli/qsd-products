@@ -1,22 +1,10 @@
 class PricesController < ApplicationController
-  before_action :plans_collection, :periodicities_collection,
-                only: %i[new create edit]
-  def new
-    @price = Price.new
-  end
-
-  def create
-    @price = Price.new(price_params)
-    @price.save
-    redirect_to prices_path, notice: t('.success')
-  end
-
-  def show
-    @price = Price.find(params[:id])
-  end
+  before_action :load_plans_and_periodicities, only: %i[index create edit]
+  before_action :set_view_name, only: %i[index show]
 
   def index
     @prices = Price.all
+    @price = Price.new
   end
 
   def edit
@@ -28,9 +16,15 @@ class PricesController < ApplicationController
     msg = t('.success')
     return redirect_to prices_path, notice: msg if @price.update(price_params)
 
-    @plans = Plan.all
-    @periodicities = Periodicity.all
+    load_plans_and_periodicities
     render :edit
+  end
+
+  def create
+    @price = Price.new(price_params)
+    return redirect_to @price, notice: t('.success') if @price.save
+
+    render :index
   end
 
   private
@@ -39,11 +33,12 @@ class PricesController < ApplicationController
     params.require(:price).permit(:plan_price, :plan_id, :periodicity_id)
   end
 
-  def plans_collection
+  def load_plans_and_periodicities
     @plans = Plan.all
+    @periodicities = Periodicity.all
   end
 
-  def periodicities_collection
-    @periodicities = Periodicity.all
+  def set_view_name
+    @view_name = 'Preços'
   end
 end
