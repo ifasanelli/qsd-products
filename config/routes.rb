@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :periodicities, only: %i[index new create edit update]
   resources :product_types, only: %i[index create edit update]
-  resources :plans, only: %i[index create] do
+  resources :plans, only: %i[index create edit update] do
     post 'unavailable', 'available', on: :member
   end
   resources :prices, only: %i[index new create show]

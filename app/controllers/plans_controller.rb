@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
-  before_action :set_view_name, only: %i[index]
-  before_action :dependencies, only: %i[create index]
-  before_action :product_type_collection, only: %i[index]
+  before_action :set_view_name, only: %i[index edit]
+  before_action :dependencies, only: %i[create index edit update]
+  before_action :product_type_collection, only: %i[index edit]
 
   def index
     @plan = Plan.new
@@ -23,6 +23,19 @@ class PlansController < ApplicationController
   def available
     find_plan.available!
     redirect_back(fallback_location: plans_path)
+  end
+
+  def edit
+    @plan = Plan.find_by(params[:id])
+  end
+
+  def update
+    @plan = Plan.find_by(params[:id])
+    return redirect_to plans_path, notice: t('.success')\
+                       if @plan.update(plan_params)
+
+    product_type_collection
+    render :edit
   end
 
   private

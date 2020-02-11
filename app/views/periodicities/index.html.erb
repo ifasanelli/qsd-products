@@ -1,34 +1,39 @@
 <% if @periodicities.empty? %>
   Lista Vazia
 <% end %>
+
 <% if @periodicity.errors.any? %>
+<div class="ls-alert-danger">
+     Você deve corrigir os seguintes erros:
   <% @periodicity.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
+  <br /><strong><%= msg %></strong>
+  <% end %></div>
 <% end %>
-<h2 class="ls-title-3"> Cadastrar Periodicidade <strong></strong></h2>
-<%= render partial: 'form' %>
-<hr>
+
+
 <div class="ls-box">
-  <header class="ls-info-header">
-    <h6 class="ls-title-4">Lista de Periodicidades</h6>
-  </header>
-  <% @periodicities.each do |periodicity| %>
-    <div class="ls-list">
-      <header class="ls-list-header">
-        <div class="ls-list-title col-md-9">
-          <%= link_to periodicity.name, edit_periodicity_path(periodicity) %>
-        </div>
-        <div class="col-md-3 ls-txt-right">
-          <%= link_to 'Alterar', edit_periodicity_path(periodicity), class:"ls-btn-primary" %>
-        </div>
-      </header>
-      <div class="ls-list-content ">
-        <div class="col-xs-12 col-md-6">
-          <span class="ls-list-label">Quantidade de Meses</span>
-          <strong><%= periodicity.period %></strong>
-        </div>
+<header class="ls-info-header">
+  <h6 class="ls-title-4">Cadastrar Periodicidade</h6>
+  <%= render partial: 'form' %>
+</header>
+<h6 class="ls-title-4">Lista de Periodicidade:</h6>
+<hr>
+<% @periodicities.each do |periodicity| %>
+  <div class="ls-list">
+    <header class="ls-list-header">
+      <div class="ls-list-title col-md-9">
+        <%= link_to periodicity.name, edit_periodicity_path(periodicity) %>
+      </div>
+      <div class="col-md-3 ls-txt-right">
+        <%= link_to 'Alterar', edit_periodicity_path(periodicity), class:"ls-btn-primary" %>
+      </div>
+    </header>
+    <div class="ls-list-content ">
+      <div class="col-xs-12 col-md-6">
+        <span class="ls-list-label">Quantidade de Meses</span>
+        <strong><%= periodicity.period %></strong>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 </div>
