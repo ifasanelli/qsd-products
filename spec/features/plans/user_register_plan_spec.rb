@@ -1,18 +1,19 @@
 require 'rails_helper'
 
-feature 'user register a new plan type' do
+feature 'user register a new plan' do
   scenario 'succesfully' do
     create(:product_type, name: 'Hospedagem')
+    user = create(:user)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Planos'
-    click_on 'Registrar novo Plano'
     fill_in 'Nome', with: 'Hospedagem Básica'
     fill_in 'Descrição', with: 'É um espaço em servidor fornecido pela Locaweb'\
                                ' para que você possa armazenar o seu site.'
     select 'Hospedagem', from: 'Tipo de Produto'
     fill_in 'Detalhes', with: 'Muitos detalhes, cheio deles'
-    click_on 'Criar Plano'
+    click_on 'Salvar'
 
     expect(page).to have_content('Plano registrado com sucesso')
     expect(page).to have_content('Hospedagem Básica')
@@ -23,11 +24,12 @@ feature 'user register a new plan type' do
   end
 
   scenario 'return error message if can\'t register' do
-    visit root_path
+    user = create(:user)
 
+    login_as user, scope: :user
+    visit root_path
     click_on 'Planos'
-    click_on 'Registrar novo Plano'
-    click_on 'Criar Plano'
+    click_on 'Salvar'
 
     expect(page).to have_content('Você deve corrigir os seguintes erros')
     expect(page).not_to have_content('Hospedagem Básica')

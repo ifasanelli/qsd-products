@@ -2,46 +2,38 @@
   <%= Price.model_name.human(count: 2) %>
 </h1>
 
-
-<div id="cars" class="ls-tab-content ls-active">
-  <table class="ls-table ls-table-striped ls-bg-header">
-    <thead>
-      <tr>
-        <th>
-          <%= Price.human_attribute_name('plan_price') %>
-        </th>
-        <th class="hidden-xs">
-          <%= Price.human_attribute_name('plan_id') %>
-        </th>
-        <th>
-          <%= Price.human_attribute_name('periodicity_id') %>
-        </th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @prices.each do |price| %>
-      <tr>
-        <td><%= "#{format("R$ %.2f", price.plan_price)}" %></td>
-        <td class="hidden-xs"><%= price.plan.name %></td>
-        <td><%= price.periodicity.name %></td>
-        <td id=<%= "price-#{price.id}" %>>
-          <%= link_to t(:edit, scope: [:application_view, :buttons]),
-                        edit_price_path(price), class: "ls-btn" %>
-          <%= link_to t(:delete, scope: [:application_view, :buttons]),
-                        price, class: "ls-btn-primary-danger
-          ls-ico-remove", method: :delete, data: {confirm: "#{t(:confirm?,
-                             scope: [:application_view, :messages])}"} %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= link_to t(:register, scope: [:price_view, :buttons]), new_price_path,
-              class: 'ls-btn-primary' %>
-
+<% if @prices.empty? %>
+  Lista Vazia
+<% end %>
+<h2 class="ls-title-3">Cadastrar Preço <strong></strong></h2>
+<%= render partial: 'form' %>
+<hr>
+<div class="ls-box">
+  <header class="ls-info-header">
+    <h6 class="ls-title-4">Lista de Preços</h6>
+  </header>
+  <% @prices.each do |price| %>
+    <div class="ls-list">
+      <header class="ls-list-header">
+        <div class="ls-list-title col-md-9">
+          <%= link_to format('R$ %.2f', price.plan_price), edit_price_path(price) %>
+        </div>
+        <div class="col-md-3 ls-txt-right">
+          <%= link_to 'Alterar', edit_price_path(price), class:"ls-btn-primary" %>
+        </div>
+      </header>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= Plan.model_name.human %></span>
+          <strong><%= link_to price.plan.name, plan_path(price.plan) %></strong>
+        </div>
+      </div>
+     <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= Periodicity.model_name.human %></span>
+          <strong><%= link_to price.periodicity.name, periodicity_path(price.periodicity) %></strong>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
-
-
-<br>

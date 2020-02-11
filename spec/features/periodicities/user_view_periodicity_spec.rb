@@ -7,6 +7,9 @@ describe 'User view periodicity' do
       create(:periodicity, name: 'Trimestral', period: 3)
       create(:periodicity, name: 'Semestral', period: 6)
       create(:periodicity, name: 'Anual', period: 12)
+      user = create(:user)
+
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidade'
       expect(page).to have_content('Meses')
@@ -16,6 +19,9 @@ describe 'User view periodicity' do
       expect(page).to have_content('12')
     end
     it 'dont have periodicity registered' do
+      user = create(:user)
+
+      login_as user, scope: :user
       visit root_path
       click_on 'Periodicidade'
       expect(page).to have_content('Lista Vazia')

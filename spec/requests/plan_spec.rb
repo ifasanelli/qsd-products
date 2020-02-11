@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Plan Management' do
-  context 'index' do
+  context 'show' do
     it 'renders a json successfully' do
       plan = create(:plan, name: 'Hospedagem XPto', description: 'etc',
                            details: '123')

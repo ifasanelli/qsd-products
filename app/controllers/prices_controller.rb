@@ -1,6 +1,6 @@
 class PricesController < ApplicationController
   before_action :load_plans_and_periodicities, only: %i[index create edit]
-  before_action :set_view_name, only: %i[index show]
+  before_action :set_view_name, only: %i[index]
 
   def index
     @prices = Price.all
@@ -9,6 +9,7 @@ class PricesController < ApplicationController
 
   def edit
     @price = Price.find(params[:id])
+    @prices = Price.all
   end
 
   def update
@@ -22,8 +23,9 @@ class PricesController < ApplicationController
 
   def create
     @price = Price.new(price_params)
-    return redirect_to @price, notice: t('.success') if @price.save
+    return redirect_to prices_path, notice: t('.success') if @price.save
 
+    @prices = Price.all
     render :index
   end
 
@@ -39,6 +41,6 @@ class PricesController < ApplicationController
   end
 
   def set_view_name
-    @view_name = 'Preços'
+    @view_name = Price.model_name.human
   end
 end

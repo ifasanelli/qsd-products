@@ -1,7 +1,54 @@
-
-
-<% @plans.each do |plan| %>
-  <%= link_to plan.name, plan %>
+<%= flash[:notice] %>
+<% if @plans.empty? %>
+  Lista Vazia
 <% end %>
-
-<%= link_to 'Registrar novo Plano', new_plan_path %>
+<h2 class="ls-title-3">Cadastrar Plano <strong></strong></h2>
+<%= render partial: 'form' %>
+<hr>
+<div class="ls-box">
+  <header class="ls-info-header">
+    <h6 class="ls-title-4">Lista de Planos</h6>
+  </header>
+  <% @plans.each do |plan| %>
+    <div class="ls-list">
+      <header class="ls-list-header">
+        <div class="ls-list-title col-md-9">
+          <%= link_to plan.name, edit_plan_path(plan) %>
+        </div>
+        <div class="col-md-3 ls-txt-right">
+          <%= link_to 'Alterar', edit_plan_path(plan), class:"ls-btn-primary" %>
+        </div>
+      </header>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= ProductType.model_name.human %></span>
+          <strong><%= link_to plan.product_type.name, product_type_path(plan.product_type) %></strong>
+        </div>
+      </div>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= Plan.human_attribute_name('description') %></span>
+          <strong><%= plan.description %></strong>
+        </div>
+      </div>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= Plan.human_attribute_name('details') %></span>
+          <strong><%= plan.details %></strong>
+        </div>
+      </div>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= Plan.human_attribute_name('status') %></span>
+          <strong>
+            <% if plan.status == 'available' %>
+              <%= link_to t('status.available'), unavailable_plan_path(plan), method: :post %>
+            <% else %>
+              <%= link_to t('status.unavailable'), available_plan_path(plan), method: :post %>
+            <% end %>
+          </strong>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

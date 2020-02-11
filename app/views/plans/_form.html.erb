@@ -1,18 +1,27 @@
 <% if @plan.errors.any? %>
   Você deve corrigir os seguintes erros:
- <% @plan.errors.full_messages.each do |message| %>
-  <%= message %>
- <% end %>
+  <% @plan.errors.full_messages.each do |msg| %>
+    <p> <%= msg %> </p>
+  <% end %>
 <% end %>
-
-<%= form_with model: @plan, local: true do |f| %>
- <%= f.label :name %>
- <%= f.text_field :name %>
- <%= f.label :description %>
- <%= f.text_area :description %>
-  <%= f.label :product_type_id %>
- <%= f.collection_select :product_type_id, @product_types, :id, :name %>
- <%= f.label :details %>
- <%= f.text_area :details %>
- <%= f.submit %>
+<%= form_with model: @plan, class:"ls-form ls-form-inline row", local: true do |f| %>
+  <label class="ls-label col-md-5">
+    <b class="ls-label-text"><%= f.label :name %></b>
+    <%= f.text_field :name %>
+  </label>
+  <label class="ls-label col-md-4">
+    <b class="ls-label-text"><%= f.label :description %></b>
+    <%= f.text_area :description %>
+  </label>
+  <label class="ls-label col-md-4">
+    <b class="ls-label-text"><%= f.label :details %></b>
+    <%= f.text_area :details %>
+  </label>
+  <label class="ls-label col-md-4">
+    <b class="ls-label-text"><%= f.label :product_type_id %></b>
+    <%= f.collection_select :product_type_id, @product_types, :id, :name %>
+  </label>
+  <div class="ls-actions-btn">
+  <%= f.submit class: 'ls-btn'%>
+  </div>
 <% end %>
