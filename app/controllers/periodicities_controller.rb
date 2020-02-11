@@ -18,8 +18,8 @@ class PeriodicitiesController < ApplicationController
   end
 
   def update
-    return redirect_to periodicities_path if\
-                       @periodicity.update(periodicity_params)
+    return redirect_to periodicities_path\
+                       if @periodicity.update(periodicity_params)
 
     render :edit
   end

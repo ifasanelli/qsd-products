@@ -5,7 +5,6 @@ feature 'user register a new product type' do
     visit root_path
 
     click_on 'Tipos de Produtos'
-    click_on 'Registrar novo Tipo de Produto'
     fill_in 'Nome', with: 'Hospedagem'
     fill_in 'Descrição', with: 'É um espaço em servidor fornecido pela Locaweb'\
                                ' para que você possa armazenar o seu site.'
@@ -23,7 +22,6 @@ feature 'user register a new product type' do
     visit root_path
 
     click_on 'Tipos de Produtos'
-    click_on 'Registrar novo Tipo de Produto'
     click_on 'Salvar'
 
     expect(page).to have_content('Você deve corrigir os seguintes erros')

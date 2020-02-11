@@ -37,6 +37,18 @@
           <strong><%= plan.details %></strong>
         </div>
       </div>
+      <div class="ls-list-content ">
+        <div class="col-xs-12 col-md-6">
+          <span class="ls-list-label"><%= Plan.human_attribute_name('status') %></span>
+          <strong>
+            <% if plan.status == 'available' %>
+              <%= link_to t('status.available'), unavailable_plan_path(plan), method: :post %>
+            <% else %>
+              <%= link_to t('status.unavailable'), available_plan_path(plan), method: :post %>
+            <% end %>
+          </strong>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
