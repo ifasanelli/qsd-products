@@ -3,5 +3,6 @@ class Plan < ApplicationRecord
 
   enum status: { available: 0, unavailable: 5 }
 
-  validates :name, presence: true
+  validates :name, :details, :description, presence: true
+  validates :name, uniqueness: true
 end
