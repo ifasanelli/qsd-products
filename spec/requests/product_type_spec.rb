@@ -28,16 +28,21 @@ describe 'Product Type Management' do
       expect(response).not_to have_http_status(:bad_request)
     end
     it 'renders plans from a product' do
-      product_type = create(:product_type)
-
+      product_type = create(:product_type, name: 'PlanoUm', product_key: 'A')
+      other_product_type = create(:product_type, name: 'PlanoDois',
+                                                 product_key: 'B')
       basic_plan = Plan.create(name: 'Small', description: 'Plano basico',
                                product_type: product_type,
-                               details: 'Plano básico contendo [x,y,z]')
-
+                               details: 'Plano básico contendo x,y,z')
       pro_plan = Plan.create(name: 'Pro', description: 'Plano Profissional',
                              product_type: product_type,
-                             details: 'Plano Profissional contendo [x,y,z,a,b]')
-
+                             details: 'Plano Profissional contendo x,y,z,a,b')
+      Plan.create(name: 'Junior', description: 'Plano Junior',
+                  product_type: other_product_type, details: 'Plan junior x')
+      Plan.create(name: 'Pleno', description: 'Plano Pleno',
+                  product_type: other_product_type, details: 'Plan plain x,y,z')
+      Plan.create(name: 'Senior', description: 'Plano Senior',
+                  product_type: other_product_type, details: 'Plano senior k,l')
       get api_v1_product_type_path(product_type[:id])
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response).to have_http_status(:ok)
@@ -47,6 +52,7 @@ describe 'Product Type Management' do
       expect(json[1][:name]).to eq(pro_plan.name)
       expect(json[1][:description]).to eq(pro_plan.description)
       expect(json[1][:details]).to eq(pro_plan.details)
+      expect(json.length).to eq(2)
     end
   end
 end
