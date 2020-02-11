@@ -30,5 +30,6 @@ feature 'user edit a product type' do
     click_on 'Salvar'
 
     expect(page).to have_content('Você deve corrigir os seguintes erros')
+    expect(page).not_to have_content('Tipo de Produto editado com sucesso')
   end
 end
