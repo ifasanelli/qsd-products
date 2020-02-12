@@ -70,6 +70,60 @@
 ]
 ```
 
+### GET '/api/v1/plans'
+* Ao acessar retorna o seguinte JSON com a lista dos tipos de produtos:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "TESTHOSPTEST41 BASICO",
+    "description": "Descrição test",
+    "product_type_id": 1,
+    "details": "Detalhe detalhado",
+    "created_at": "2020-02-10T23:02:25.331Z",
+    "updated_at": "2020-02-10T23:02:25.331Z",
+    "status": null
+  },
+  {
+    "id": 2,
+    "name": "Basic",
+    "description": "Plano Básico",
+    "product_type_id": 1,
+    "details": "Plano básico contendo [x,y,z]",
+    "created_at": "2020-02-10T23:02:25.669Z",
+    "updated_at": "2020-02-10T23:02:25.669Z",
+    "status": null
+  },
+  {
+    "id": 3,
+    "name": "Pro",
+    "description": "Plano Profissional",
+    "product_type_id": 1,
+    "details": "Plano Profissional contendo [x,y,z,a,b]",
+    "created_at": "2020-02-10T23:02:25.735Z",
+    "updated_at": "2020-02-10T23:02:25.735Z",
+    "status": null
+  }
+]
+```
+
+### GET '/api/v1/plans/1'
+* Ao acessar retorna o seguinte JSON com detalhes de um plano:
+
+```json
+{
+  "id": 1,
+  "name": "TESTHOSPTEST41 BASICO",
+  "description": "Descrição test",
+  "product_type_id": 1,
+  "details": "Detalhe detalhado",
+  "created_at": "2020-02-10T18:22:34.155Z",
+  "updated_at": "2020-02-11T19:25:39.391Z",
+  "status": "available"
+}
+```
+
 ### GET '/api/v1/plans/1/prices'
 * Ao acessar retorna o seguinte JSON com a lista dos preços de um plano:
 
@@ -100,22 +154,6 @@
     "periodicity": "SeteAnos"
   }
 ]
-```
-
-### GET '/api/v1/plans/1'
-* Ao acessar retorna o seguinte JSON com detalhes de um plano:
-
-```json
-{
-  "id": 1,
-  "name": "TESTHOSPTEST41 BASICO",
-  "description": "Descrição test",
-  "product_type_id": 1,
-  "details": "Detalhe detalhado",
-  "created_at": "2020-02-10T18:22:34.155Z",
-  "updated_at": "2020-02-11T19:25:39.391Z",
-  "status": "available"
-}
 ```
 
 ### GET '/api/v1/periodicities'
