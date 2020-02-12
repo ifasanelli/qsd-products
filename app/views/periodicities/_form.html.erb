@@ -5,6 +5,7 @@
   <% end %>
 <% end %>
 
+
 <%= form_with model: @periodicity, class:"ls-form ls-form-inline row", local: true do |form| %>
   <label class="ls-label col-md-5">
     <b class="ls-label-text">Nome</b>
@@ -13,9 +14,10 @@
   </label>
   <label class="ls-label col-md-4">
     <b class="ls-label-text">Período</b>
-        <%= form.text_field :period, placeholder:"Período em meses" %>
+        <%= form.text_field :period, placeholder:"Quantidade em meses" %>
   </label>
   <div class="ls-actions-btn">
-  <%= form.submit "Salvar" , class: 'ls-btn'%>
+  <%= form.submit "Salvar" , class: 'ls-btn-primary'%>
   </div>
 <% end %>
+

@@ -1,23 +1,27 @@
 <% if @product_type.errors.any? %>
+<div class="ls-alert-danger"><strong>
   Você deve corrigir os seguintes erros:
   <% @product_type.errors.full_messages.each do |msg| %>
     <p> <%= msg %> </p>
   <% end %>
+  </strong></div>
 <% end %>
+
+
 <%= form_with model: @product_type, class:"ls-form ls-form-inline row", local: true do |f| %>
-  <label class="ls-label col-md-5">
+  <label class="ls-label col-md-3">
     <b class="ls-label-text"><%= f.label :name %></b>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder:'Ex: Email' %>
   </label>
   <label class="ls-label col-md-4">
     <b class="ls-label-text"><%= f.label :description %></b>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, rows:"1", class:'ls-textarea-autoresize', placeholder:'Ex: Serviço de e-mail'  %>
   </label>
   <label class="ls-label col-md-4">
     <b class="ls-label-text"><%= f.label :product_key %></b>
-    <%= f.text_area :product_key %>
+    <%= f.text_area :product_key, rows:"1", class:'ls-textarea-autoresize', placeholder:'Ex: MAIL'  %>
   </label>
   <div class="ls-actions-btn">
-  <%= f.submit class: 'ls-btn'%>
+  <%= f.submit class: 'ls-btn-primary'%>
   </div>
 <% end %>

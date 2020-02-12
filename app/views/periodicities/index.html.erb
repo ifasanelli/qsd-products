@@ -1,5 +1,8 @@
+<h1 class="ls-title-intro ls-ico-month"><%= Periodicity.model_name.human(count: 2) %></h1>
+<strong><p class="ls-alert-danger"><%= alert %></p></strong>
+<strong><p class="ls-alert-success"><%= notice %></p></strong>
 <% if @periodicities.empty? %>
-  Lista Vazia
+<div class="ls-alert-info"><strong>Atenção:</strong> Lista Vazia<br /> Cadastre uma nova <strong><%= @view_name %></strong></div>
 <% end %>
 
 <% if @periodicity.errors.any? %>
@@ -9,15 +12,15 @@
   <br /><strong><%= msg %></strong>
   <% end %></div>
 <% end %>
-
+<h3>Cadastrar Periodicidade</h3><br \>
+<div class="ls-box ls-box-gray">
+  <%= render partial: 'form' %>
+  </div>
 
 <div class="ls-box">
 <header class="ls-info-header">
-  <h6 class="ls-title-4">Cadastrar Periodicidade</h6>
-  <%= render partial: 'form' %>
+<h6 class="ls-title-4">Lista de Periodicidade</h6>
 </header>
-<h6 class="ls-title-4">Lista de Periodicidade:</h6>
-<hr>
 <% @periodicities.each do |periodicity| %>
   <div class="ls-list">
     <header class="ls-list-header">

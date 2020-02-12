@@ -1,7 +1,8 @@
-<%= flash[:notice]%>
+<h1 class="ls-title-intro ls-ico-list2"><%= Plan.model_name.human(count: 2) %></h1>
 
-<%= flash.each do |value| %>
-  <div><%= value %></div>
-<% end %>
+<p class="ls-alert-danger"><%= alert %></p>
+<p class="ls-alert-success"><%= notice %></p>
 
+<h3> Edição</h3>
+<p> Altere as informações no formulário abaixo</p><br \>
 <%= render 'form', locals: true %>

@@ -1,3 +1,6 @@
-<h2 class="ls-title-3"> Editar Tipo de Produto <strong></strong></h2>
-
+<h1 class="ls-title-intro ls-ico-bukets"><%= ProductType.model_name.human(count: 2) %></h1>
+<h3> Edição</h3>
+<p> Altere as informações no formulário abaixo</p><br \>
+<div class="ls-box ls-box-gray">
 <%= render partial: 'form', locals: { product_type: @product_type } %>
+</div>
