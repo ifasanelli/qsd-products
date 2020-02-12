@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
-      resources :product_types, only: %i[index]
-      resources :plans, only: %i[show] do
+      resources :product_types, only: %i[index show]
+      resources :plans, only: %i[index show] do
         resources :prices, only: %i[index]
       end
       resources :periodicities, only: %i[index]
