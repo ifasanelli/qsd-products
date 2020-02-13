@@ -1,27 +1,33 @@
 <% if @plan.errors.any? %>
-  Você deve corrigir os seguintes erros:
+<strong><div class="ls-alert-danger">Você deve corrigir os seguintes erros:
   <% @plan.errors.full_messages.each do |msg| %>
     <p> <%= msg %> </p>
-  <% end %>
+  <% end %></div></strong>
 <% end %>
-<%= form_with model: @plan, class:"ls-form ls-form-inline row", local: true do |f| %>
-  <label class="ls-label col-md-5">
+<div class="ls-box ls-box-gray">
+<%= form_with model: @plan, class:"ls-form .ls-form-horizontal row", local: true do |f| %>
+  <label class="ls-label col-md-4">
     <b class="ls-label-text"><%= f.label :name %></b>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder:'Ex: Hospedagem Basic' %>
   </label>
   <label class="ls-label col-md-4">
     <b class="ls-label-text"><%= f.label :description %></b>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, rows:"1", class:'ls-textarea-autoresize', placeholder:'Ex: Direito à 10 sites' %>
   </label>
   <label class="ls-label col-md-4">
     <b class="ls-label-text"><%= f.label :details %></b>
-    <%= f.text_area :details %>
+    <%= f.text_area :details, rows:"1", class:'ls-textarea-autoresize', placeholder:'Ex: Servidor Linux' %>
   </label>
-  <label class="ls-label col-md-4">
+
+  <label class="ls-label col-md-5">
     <b class="ls-label-text"><%= f.label :product_type_id %></b>
-    <%= f.collection_select :product_type_id, @product_types, :id, :name %>
+    <div class="ls-custom-select">
+    <%= f.collection_select :product_type_id, @product_types, :id, :name, class:'ls-select' %>
+    </div>
   </label>
+
   <div class="ls-actions-btn">
-  <%= f.submit class: 'ls-btn'%>
+  <%= f.submit class: 'ls-btn-primary'%>
   </div>
 <% end %>
+</div>

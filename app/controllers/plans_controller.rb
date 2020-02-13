@@ -26,11 +26,11 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find_by(params[:id])
+    @plan = Plan.find(params[:id])
   end
 
   def update
-    @plan = Plan.find_by(params[:id])
+    @plan = Plan.find(params[:id])
     return redirect_to plans_path, notice: t('.success')\
                        if @plan.update(plan_params)
 

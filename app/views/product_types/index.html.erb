@@ -1,10 +1,15 @@
-<%= flash[:notice] %>
+<h1 class="ls-title-intro ls-ico-bukets"><%= ProductType.model_name.human(count: 2) %></h1>
+<strong><p class="ls-alert-danger"><%= alert %></p></strong>
+<strong><p class="ls-alert-success"><%= notice %></p></strong>
+
 <% if @product_types.empty? %>
   Lista Vazia
 <% end %>
-<h2 class="ls-title-3"> Cadastrar Tipo de Produto <strong></strong></h2>
+<h3> Cadastrar Tipo de Produto</h3><br \>
+<div class="ls-box ls-box-gray">
+
 <%= render partial: 'form' %>
-<hr>
+</div>
 <div class="ls-box">
   <header class="ls-info-header">
     <h6 class="ls-title-4">Lista de Tipos de Produtos </h6>

@@ -1,11 +1,14 @@
 <h1 class="ls-title-intro ls-ico-list2">
   <%= Price.model_name.human(count: 2) %>
 </h1>
+<strong><p class="ls-alert-danger"><%= alert %></p></strong>
+<strong><p class="ls-alert-success"><%= notice %></p></strong>
+
 
 <% if @prices.empty? %>
   Lista Vazia
 <% end %>
-<h2 class="ls-title-3">Cadastrar Preço <strong></strong></h2>
+<h3>Cadastrar Preço <strong></strong></h3>
 <%= render partial: 'form' %>
 <hr>
 <div class="ls-box">
