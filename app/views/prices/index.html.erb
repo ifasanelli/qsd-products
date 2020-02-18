@@ -1,16 +1,16 @@
-<h1 class="ls-title-intro ls-ico-list2">
+<h1 class="ls-title-intro ls-ico-edit-admin">
   <%= Price.model_name.human(count: 2) %>
 </h1>
 <strong><p class="ls-alert-danger"><%= alert %></p></strong>
 <strong><p class="ls-alert-success"><%= notice %></p></strong>
 
-
 <% if @prices.empty? %>
   Lista Vazia
 <% end %>
-<h3>Cadastrar Preço <strong></strong></h3>
-<%= render partial: 'form' %>
-<hr>
+<h3> Cadastrar Preço </h3><br \>
+<div class="ls-box ls-box-gray">
+  <%= render partial: 'form' %>
+</div>
 <div class="ls-box">
   <header class="ls-info-header">
     <h6 class="ls-title-4">Lista de Preços</h6>
@@ -28,13 +28,13 @@
       <div class="ls-list-content ">
         <div class="col-xs-12 col-md-6">
           <span class="ls-list-label"><%= Plan.model_name.human %></span>
-          <strong><%= link_to price.plan.name, plan_path(price.plan) %></strong>
+          <strong><%= link_to price.plan.name, plans_path %></strong>
         </div>
       </div>
      <div class="ls-list-content ">
         <div class="col-xs-12 col-md-6">
           <span class="ls-list-label"><%= Periodicity.model_name.human %></span>
-          <strong><%= link_to price.periodicity.name, periodicity_path(price.periodicity) %></strong>
+          <strong><%= link_to price.periodicity.name, periodicities_path %></strong>
         </div>
       </div>
     </div>

@@ -1,9 +1,0 @@
-<%= flash[:notice]%>
-
-<%= flash.each do |value| %>
-  <%= value %>
-<% end %>
-
-Plano: <%= @price.plan.name %><br \>
-Periodicidade: <%= @price.periodicity.name %><br \>
-Valor do Plano: R$<%= @price.plan_price %><br \>

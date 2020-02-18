@@ -1,6 +1,8 @@
-<h1 class="ls-title-intro ls-ico-month"><%= Periodicity.model_name.human(count: 2) %></h1>
+<h1 class="ls-title-intro ls-ico-month">
+  <%= Periodicity.model_name.human(count: 2) %>
+</h1>
+<p class="ls-alert-danger"><%= alert %></p>
+<p class="ls-alert-success"><%= notice %></p>
 <h3> Edição</h3>
 <p> Altere as informações no formulário abaixo</p><br \>
-<div class="ls-box ls-box-gray">
-<%= render partial: 'form'%>
-</div>
+<%= render partial: 'form', locals: { periodicity: @periodicity } %>

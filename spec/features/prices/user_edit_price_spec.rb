@@ -36,8 +36,7 @@ feature 'User edit price' do
     fill_in 'Preço do Plano', with: ''
     click_on 'Salvar'
 
-    expect(page).to have_content('Você deve corrigir os seguintes erros para '\
-                                 'continuar')
+    expect(page).to have_content('Você deve corrigir os seguintes erros')
     expect(page).to have_content('Preço do Plano não pode ficar em branco')
     expect(page).to_not have_content('Preço atualizado com sucesso')
   end

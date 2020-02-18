@@ -30,12 +30,12 @@ class PeriodicitiesController < ApplicationController
     @periodicities = Periodicity.all
   end
 
-  def periodicity_params
-    params.require(:periodicity).permit(:name, :period)
-  end
-
   def find_periodicity
     @periodicity = Periodicity.find(params[:id])
+  end
+
+  def periodicity_params
+    params.require(:periodicity).permit(:name, :period)
   end
 
   def set_view_name

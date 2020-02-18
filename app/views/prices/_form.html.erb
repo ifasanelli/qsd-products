@@ -1,41 +1,32 @@
 <% if @price.errors.any? %>
-  <div class="ls-alert-danger">
-    <%= t(:validation_error, scope: [:application_view, :messages]) %>
-  </div>
-  <ul>
-    <% @price.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-  <br>
+<div class="ls-alert-danger"><strong>
+  Você deve corrigir os seguintes erros:
+  <% @price.errors.full_messages.each do |message| %>
+    <p> <%= message %> </p>
+  <% end %></strong>
+</div>
 <% end %>
-
-<br>
 <div class="ls-box ls-box-gray">
-<%= form_with model: @price, local: true, class: "ls-form ls-form-inline row" do |f| %>
-<label class="ls-label col-md-3">
-  <%= f.label :plan_id %>
-    <p class="ls-label-info"></p>
-    <div class="ls-custom-select">
-  <%= f.collection_select :plan_id, @plans, :id, :name, class: "ls-select" %>
-  </div>
-</label>
-
-<label class="ls-label col-md-3">
-  <%= f.label :periodicity_id %>
-  <p class="ls-label-info"></p>
-  <div class="ls-custom-select">
-  <%= f.collection_select :periodicity_id, @periodicities, :id, :name, class: "ls-select" %>
-</div>
-</label>
-<div>
-<label class="ls-label col-md-3">
-  <%= f.label :plan_price %>
-  <%= f.text_field :plan_price %>
-</div></label>
-<div class="ls-actions-btn">
-<p class="ls-label-info"></p>
-  <%= f.submit class: 'ls-btn-primary' %>
-</div>
-<% end %>
+  <%= form_with model: @price, local: true, class: "ls-form ls-form-vertical row" do |f| %>
+    <label class="ls-label col-md-5">
+      <b class="ls-label-text"><%= f.label :plan_id %></b>
+      <div class="ls-custom-select">
+        <%= f.collection_select :plan_id, @plans, :id, :name, class: "ls-select" %>
+      </div>
+    </label>
+    <label class="ls-label col-md-5">
+      <b class="ls-label-text"><%= f.label :periodicity_id %></b>
+      <div class="ls-custom-select">
+        <%= f.collection_select :periodicity_id, @periodicities, :id, :name, class: "ls-select" %>
+      </div>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :plan_price %></b>
+      <%= f.text_field :plan_price, placeholder: 'Ex: 200.00' %>
+    </label>
+    <div class="ls-actions-btn">
+      <p class="ls-label-info"></p>
+      <%= f.submit class: 'ls-btn-primary' %>
+    </div>
+  <% end %>
 </div>

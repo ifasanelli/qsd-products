@@ -1,4 +1,6 @@
-<h1 class="ls-title-intro ls-ico-bukets"><%= ProductType.model_name.human(count: 2) %></h1>
+<h1 class="ls-title-intro ls-ico-bukets">
+  <%= ProductType.model_name.human(count: 2) %>
+</h1>
 <strong><p class="ls-alert-danger"><%= alert %></p></strong>
 <strong><p class="ls-alert-success"><%= notice %></p></strong>
 
@@ -7,8 +9,7 @@
 <% end %>
 <h3> Cadastrar Tipo de Produto</h3><br \>
 <div class="ls-box ls-box-gray">
-
-<%= render partial: 'form' %>
+  <%= render partial: 'form' %>
 </div>
 <div class="ls-box">
   <header class="ls-info-header">

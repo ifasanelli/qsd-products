@@ -1,7 +1,8 @@
 class PlansController < ApplicationController
   before_action :set_view_name, only: %i[index edit]
-  before_action :dependencies, only: %i[create index edit update]
-  before_action :product_type_collection, only: %i[index edit]
+  before_action :dependencies, only: %i[create index edit]
+  before_action :find_plan, only: %i[edit update]
+  before_action :load_product_types, only: %i[index create edit]
 
   def index
     @plan = Plan.new
@@ -11,7 +12,6 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     return redirect_to plans_path, notice: t('.success') if @plan.available!
   rescue ActiveRecord::RecordInvalid
-    product_type_collection
     render :index
   end
 
@@ -26,35 +26,33 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
   end
 
   def update
-    @plan = Plan.find(params[:id])
     return redirect_to plans_path, notice: t('.success')\
                        if @plan.update(plan_params)
 
-    product_type_collection
+    load_product_types
     render :edit
   end
 
   private
 
-  def find_plan
-    @plan = Plan.find(params[:id])
-  end
-
   def dependencies
     @plans = Plan.all
   end
 
-  def product_type_collection
-    @product_types = ProductType.all
+  def find_plan
+    @plan = Plan.find(params[:id])
   end
 
   def plan_params
     params.require(:plan).permit(:name, :description, :product_type_id,
                                  :details, :status)
+  end
+
+  def load_product_types
+    @product_types = ProductType.all
   end
 
   def set_view_name
