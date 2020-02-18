@@ -7,10 +7,6 @@
 <% if @product_types.empty? %>
   Lista Vazia
 <% end %>
-<h3> Cadastrar Tipo de Produto</h3><br \>
-<div class="ls-box ls-box-gray">
-  <%= render partial: 'form' %>
-</div>
 <div class="ls-box">
   <header class="ls-info-header">
     <h6 class="ls-title-4">Lista de Tipos de Produtos </h6>
@@ -39,4 +35,8 @@
       </div>
     </div>
   <% end %>
+</div>
+<h3> Cadastrar Tipo de Produto</h3><br \>
+<div class="ls-box ls-box-gray">
+  <%= render partial: 'form', locals: { product_type: @product_type } %>
 </div>
