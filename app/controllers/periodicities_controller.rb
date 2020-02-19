@@ -9,7 +9,8 @@ class PeriodicitiesController < ApplicationController
 
   def create
     @periodicity = Periodicity.new(periodicity_params)
-    return redirect_to periodicities_path if @periodicity.save
+    return redirect_to periodicities_path,
+                       notice: t('.success') if @periodicity.save
 
     render :index
   end
@@ -18,7 +19,7 @@ class PeriodicitiesController < ApplicationController
   end
 
   def update
-    return redirect_to periodicities_path\
+    return redirect_to periodicities_path, notice: t('.success')\
                        if @periodicity.update(periodicity_params)
 
     render :edit
